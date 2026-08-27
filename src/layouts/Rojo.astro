@@ -1,0 +1,450 @@
+---
+interface Props {
+	title?: string;
+	showGrid?: boolean;
+}
+
+const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="stage">
+			<div id="logo">
+				<img src="/logo.svg" alt="" />
+			</div>
+
+			<div id="curvaroja">
+				<img src="/menuiz/curvaroja.svg" alt="" />
+			</div>
+
+			<div id="menu_iz">
+				<a class="menu1" href="#"><img src="/menuiz/menu1.svg" alt="" /></a>
+				<a class="menu2" href="#"><img src="/menuiz/menu2.svg" alt="" /></a>
+				<a class="menu3" href="#"><img src="/menuiz/menu3.svg" alt="" /></a>
+				<a class="menu4" href="#"><img src="/menuiz/menu4.svg" alt="" /></a>
+				<a class="menu5" href="#"><img src="/menuiz/menu5.svg" alt="" /></a>
+				<a class="menu6" href="#"><img src="/menuiz/menu6.svg" alt="" /></a>
+			</div>
+
+			<div class="navegadores">
+				<img class="flearriba" src="/carrusel/fleroja.svg" alt="" />
+				<img class="fleabajo" src="/carrusel/fleroja.svg" alt="" />
+			</div>
+
+			<div class="carrusel1"></div>
+
+			<div class="carrusel2"></div>
+
+			<div class="bgcarrusel">
+				<img
+					class="rojo_bgcarru"
+					src="/carrusel/rojo_bgcarru.svg"
+					alt=""
+				/>
+			</div>
+
+			<div class="blanco_bg">
+				<img src="/bg/blanco_bg.svg" alt="" />
+			</div>
+
+			<div class="footer">
+				<div class="rrss">
+					<a href="#" target="_blank" rel="noopener"><img src="/footer/ig.svg" alt="Instagram" /></a>
+					<a href="#" target="_blank" rel="noopener"><img src="/footer/ws.svg" alt="WhatsApp" /></a>
+					<a href="#" target="_blank" rel="noopener"><img src="/footer/fb.svg" alt="Facebook" /></a>
+				</div>
+				<img src="/footer/footerbg.svg" alt="" />
+			</div>
+
+			<slot />
+		</div>
+	</body>
+</html>
+
+<script>
+	const imagenes = ["/carrusel/r_img1.webp", "/carrusel/r_img2.webp"];
+
+	const c1 = document.querySelector(".carrusel1");
+	const c2 = document.querySelector(".carrusel2");
+	const flearriba = document.querySelector(".flearriba");
+	const fleabajo = document.querySelector(".fleabajo");
+
+	const total = imagenes.length;
+	const copias = 3;
+	let pos = total;
+
+	function crearPista(contenedor) {
+		const pista = document.createElement("div");
+		pista.className = "pista";
+		for (let i = 0; i < copias; i++) {
+			for (const src of imagenes) {
+				const img = document.createElement("img");
+				img.src = src;
+				img.alt = "";
+				pista.appendChild(img);
+			}
+		}
+		contenedor.appendChild(pista);
+		return pista;
+	}
+
+	const pista1 = crearPista(c1);
+	const pista2 = crearPista(c2);
+
+	let pendiente = null;
+
+	function posicionar(sinTransicion) {
+		if (sinTransicion) {
+			pista1.style.transition = "none";
+			pista2.style.transition = "none";
+		}
+		pista1.style.transform = `translateY(-${pos * 100}cqh)`;
+		pista2.style.transform = `translateY(-${(pos + 1) * 100}cqh)`;
+		if (sinTransicion) {
+			void pista1.offsetWidth;
+			pista1.style.transition = "transform 0.6s ease";
+			pista2.style.transition = "transform 0.6s ease";
+		}
+	}
+
+	pista1.addEventListener("transitionend", () => {
+		if (pendiente !== null) {
+			pos = pendiente;
+			pendiente = null;
+			posicionar(true);
+		}
+	});
+
+	posicionar(true);
+
+	fleabajo.addEventListener("click", () => {
+		pos--;
+		if (pos <= 0) {
+			pendiente = total;
+		}
+		posicionar(false);
+	});
+
+	flearriba.addEventListener("click", () => {
+		pos++;
+		if (pos >= 2 * total) {
+			pendiente = total;
+		}
+		posicionar(false);
+	});
+</script>
+
+<style is:global>
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-Regular.woff2") format("woff2");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-Medium.woff2") format("woff2");
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-SemiBold.woff2") format("woff2");
+		font-weight: 600;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-Bold.woff2") format("woff2");
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Open Sans";
+		src: url("/fonts/OpenSans-ExtraBold.woff2") format("woff2");
+		font-weight: 800;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	html,
+	body {
+		margin: 0;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	body {
+		display: grid;
+		place-items: center;
+		background: #ff3545;
+	}
+
+	.footer {
+		display: flex;
+		align-items: center;
+		padding-top: 0.1cqw;
+		padding-left: 0.65cqw;
+		padding-right: 0.5cqw;
+		position: relative;
+		z-index: 3;
+		grid-column: 3/44;
+		grid-row: 24/26;
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+
+	.rrss {
+		position: absolute;
+		right: 1.7cqw;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 1;
+		display: flex;
+		gap: 1.8cqw;
+		a {
+			display: inline-flex;
+			cursor: pointer;
+			transition: transform 0.25s ease;
+		}
+		a:hover {
+			transform: scale(1.15);
+		}
+		img {
+			height: 1.8cqw;
+		}
+	}
+
+	.bgcarrusel {
+		grid-column: 46/56;
+		grid-row: 3/25;
+		z-index: 1;
+	}
+
+	.rojo_bgcarru {
+		position: relative;
+		right: 1cqw;
+		bottom: 0.8cqw;
+		width: 21.2cqw;
+	}
+
+	.navegadores {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		z-index: 3;
+		grid-column: 50/52;
+		grid-row: 2/26;
+		img {
+			width: 100%;
+		}
+	}
+
+	.carrusel1 {
+		z-index: 2;
+		grid-column: 47/55;
+		grid-row: 4/14;
+		border-radius: 2cqw;
+		margin-bottom: 0.9cqw;
+		overflow: hidden;
+		position: relative;
+		container-type: size;
+	}
+
+	.carrusel2 {
+		z-index: 2;
+		grid-column: 47/55;
+		grid-row: 14/24;
+		border-radius: 2cqw;
+		margin-top: 0.9cqw;
+		overflow: hidden;
+		position: relative;
+		container-type: size;
+	}
+
+	.pista {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		img {
+			display: block;
+			width: 100%;
+			height: 100cqh;
+			flex-shrink: 0;
+			object-fit: cover;
+		}
+	}
+
+	.flearriba,
+	.fleabajo {
+		cursor: pointer;
+		transition: transform 0.25s ease;
+	}
+
+	.flearriba {
+		transform: rotate(180deg);
+	}
+
+	.flearriba:hover {
+		transform: rotate(180deg) scale(1.15);
+	}
+
+	.fleabajo:hover {
+		transform: scale(1.15);
+	}
+
+	#logo {
+		grid-column: 3/9;
+		grid-row: 2/4;
+		z-index: 1;
+	}
+
+	#curvaroja {
+		display: flex;
+		align-items: flex-start;
+		grid-column: 2/11;
+		grid-row: 8/24;
+		z-index: 1;
+		img {
+			height: 100.3%;
+		}
+	}
+
+	#menu_iz {
+		display: flex;
+		flex-direction: column;
+		grid-column: 3/10;
+		grid-row: 6/23;
+		z-index: 1;
+		justify-content: flex-start;
+	}
+	.menu1 {
+		position: relative;
+		margin-bottom: 2.15cqw;
+		top: 0.45cqw;
+		left: 0.7cqw;
+		img {
+			width: 9cqw;
+		}
+	}
+
+	.menu2 {
+		position: relative;
+		margin-bottom: 2.4cqw;
+		top: 0.7cqw;
+		left: 4.3cqw;
+
+		img {
+			width: 7.4cqw;
+		}
+	}
+
+	.menu3 {
+		position: relative;
+		margin-bottom: 2.95cqw;
+		top: 0.79cqw;
+		left: 0.7cqw;
+
+		img {
+			width: 9.8cqw;
+		}
+	}
+
+	.menu4 {
+		position: relative;
+		margin-bottom: 2.2cqw;
+		top: 0.304cqw;
+		left: 2.25cqw;
+
+		img {
+			width: 9.5cqw;
+		}
+	}
+
+	.menu5 {
+		position: relative;
+		margin-bottom: 2.24cqw;
+		top: 0.425cqw;
+		left: 0.7cqw;
+
+		img {
+			width: 10.7cqw;
+		}
+	}
+
+	.menu6 {
+		position: relative;
+		top: 0.577cqw;
+		left: 1.9cqw;
+
+		img {
+			width: 9.9cqw;
+		}
+	}
+
+	.menu1,
+	.menu2,
+	.menu3,
+	.menu4,
+	.menu5,
+	.menu6 {
+		cursor: pointer;
+	}
+
+	.menu1 img,
+	.menu2 img,
+	.menu3 img,
+	.menu4 img,
+	.menu5 img,
+	.menu6 img {
+		transition: transform 0.25s ease;
+	}
+
+	.menu1:hover img,
+	.menu2:hover img,
+	.menu3:hover img,
+	.menu4:hover img,
+	.menu5:hover img,
+	.menu6:hover img {
+		transform: scale(1.08);
+	}
+
+	.blanco_bg {
+		grid-column: 1/57;
+		grid-row: 1/27;
+	}
+
+	.stage {
+		width: min(100vw, calc(100vh * 1400 / 650));
+		aspect-ratio: 1400 / 650;
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(56, 1fr);
+		grid-template-rows: repeat(26, 1fr);
+		container-type: size;
+		font-size: 1cqw;
+		font-family: "Open Sans", sans-serif;
+		background: #ff3545;
+	}
+</style>
