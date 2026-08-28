@@ -1,36 +1,26 @@
 ---
+import Menuhistoria from "../components/Menuhistoria.astro";
 import Rojo from "../layouts/Rojo.astro";
 ---
 
 <Rojo>
     <div class="menu_top">
-        <a class="activo" href="#">¿Qué es?</a>
-        <a href="./historia">Historia</a>
+        <a href="./">¿Qué es?</a>
+        <a class="activo" href="./historia">Historia</a>
         <a href="#">Misión y Visión</a>
         <a href="#">Familia Salesina</a>
         <a href="#">Perfil de atendidos</a>
     </div>
 
-    <div class="que_es">
-        <p>
-            Es una Asociación Civil, sin fines de lucro, que brinda apoyo y
-            acompañamiento a <br />niños, niñas, adolescentes, jóvenes (NNAJ) y
-            sus familias que sufren severas situaciones de abandono económico,
-            social y moral, mediante la creación de obras y servicios, y la
-            realizacióde actividades educativas, deportivas, asistenciales,
-            culturales, tecnológicas, artísticas y religiosas, así como también
-            estimular a este fin a otras personas naturales o jurídicas, u
-            organizaciones.
-        </p>
-    </div>
-    <div class="bg_quees">
-        <img src="/que_es/bg_quees.svg" alt="" />
+    <div class="historia">
+        <Menuhistoria />
     </div>
 
     <style>
-        .que_es {
-            grid-column: 15/41;
-            grid-row: 10/16;
+        .historia {
+            padding-top: 0.7cqw;
+            grid-column: 11/43;
+            grid-row: 5/25;
             z-index: 2;
         }
 
