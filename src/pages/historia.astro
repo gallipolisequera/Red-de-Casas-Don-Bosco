@@ -7,7 +7,7 @@ import Rojo from "../layouts/Rojo.astro";
     <div class="menu_top">
         <a href="./">¿Qué es?</a>
         <a class="activo" href="./historia">Historia</a>
-        <a href="#">Misión y Visión</a>
+        <a href="./misionyvision">Misión y Visión</a>
         <a href="#">Familia Salesina</a>
         <a href="#">Perfil de atendidos</a>
     </div>
@@ -26,25 +26,11 @@ import Rojo from "../layouts/Rojo.astro";
             z-index: 2;
         }
 
-        .que_es p {
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.143cqw;
-            font-weight: 500;
-            letter-spacing: -0.009em;
-            line-height: 1.571cqw;
-            margin: 0;
-        }
-
-        .bg_quees {
-            grid-column: 12/44;
-            grid-row: 6/23;
-            z-index: 1;
-        }
         .menu_top {
             grid-column: 13/42;
             grid-row: 3/6;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             align-items: center;
         }
 
@@ -55,6 +41,10 @@ import Rojo from "../layouts/Rojo.astro";
             color: #333333;
             text-decoration: none;
             transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .menu_top a:hover {

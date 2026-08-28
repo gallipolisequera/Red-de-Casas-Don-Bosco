@@ -1,0 +1,168 @@
+---
+import Rojo from "../layouts/Rojo.astro";
+---
+
+<Rojo>
+    <div class="menu_top">
+        <a href="./">¿Qué es?</a>
+        <a href="./historia">Historia</a>
+        <a class="activo" href="#">Misión y Visión</a>
+        <a href="#">Familia Salesina</a>
+        <a href="#">Perfil de atendidos</a>
+    </div>
+
+    <div class="bg_info">
+        <img src="/misionyvision/bg_info.svg" alt="" />
+    </div>
+
+    <div class="menumision" data-visible="mision">
+        <span data-opcion="mision">Misión</span>
+        <span data-opcion="vision">Visión</span>
+        <span data-opcion="valores">Valores</span>
+    </div>
+
+    <div class="info">
+        <p id="mision" lang="es">
+            Desarrollar una amplia acción educativa pastoral de solidaridad y
+            prevención a favor de niños, niñas, adolescentes, jóvenes,
+            educadores y sus familias que viven en <br />circunstancias
+            especialmente difíciles por sus situaciones de vulnerabilidad,
+            ofreciéndoles una experiencia de hogar, patio, escuela y parroquia
+            al estilo salesiano, con <br />el fin de que se conviertan en
+            agentes transformadores, como buenos cristianos <br />y honrados
+            ciudadanos.
+        </p>
+
+        <p id="vision">
+            Ser casas de referencia en la atención y protección integral de
+            niños, niñas, adolescentes, jóvenes y sus familias en situaciones de
+            vulnerabilidad para garantizarla <br /> reintegración con su entorno familiar,
+            comunitario y social.
+        </p>
+
+        <p id="valores">
+            Nuestros valores se fundamentan en la metodología del sistema
+            preventivo de Don Bosco que contempla la razón, religión y amor,
+            destacándose:
+        </p>
+    </div>
+
+    <style>
+        .info {
+            grid-column: 15/41;
+            grid-row: 10/16;
+            z-index: 2;
+            p {
+                hyphens: auto;
+                font-family: "Open Sans", sans-serif;
+                font-size: 1.143cqw;
+                font-weight: 500;
+                letter-spacing: -0.009em;
+                line-height: 1.571cqw;
+                margin: 0;
+            }
+        }
+
+        .info p {
+            display: none;
+        }
+        .menumision[data-visible="mision"] ~ .info #mision,
+        .menumision[data-visible="vision"] ~ .info #vision,
+        .menumision[data-visible="valores"] ~ .info #valores {
+            display: block;
+        }
+
+        .bg_info {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+        }
+        .menumision {
+            margin-bottom: 0.65cqw;
+            margin-left: 1cqw;
+            margin-right: 0.8cqw;
+            grid-column: 15/29;
+            grid-row: 7/9;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            background-color: #f7f7f7;
+            border-radius: 6cqw;
+            box-shadow: 0 0.35cqw 0.5cqw rgba(0, 0, 0, 0.25);
+            z-index: 2;
+        }
+        .menumision span {
+            font-size: 1.21cqw;
+            font-weight: 700;
+            font-family: "Open Sans", sans-serif;
+            color: #ff3545;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            justify-self: center;
+            padding: 0.2cqw 1.2cqw;
+            border-radius: 1.4cqw;
+            transition: transform 0.25s ease;
+        }
+
+        .menumision span:hover {
+            transform: scale(1.08);
+        }
+
+        .menumision[data-visible="mision"] span[data-opcion="mision"],
+        .menumision[data-visible="vision"] span[data-opcion="vision"],
+        .menumision[data-visible="valores"] span[data-opcion="valores"] {
+            background-color: #ff3545;
+            color: #ffffff;
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #ff3545;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #ff3545;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Rojo>
+
+<script>
+    const panel = document.querySelector(".menumision");
+    panel.querySelectorAll("[data-opcion]").forEach((opcion) => {
+        opcion.addEventListener("click", () => {
+            panel.dataset.visible = opcion.dataset.opcion;
+        });
+    });
+</script>

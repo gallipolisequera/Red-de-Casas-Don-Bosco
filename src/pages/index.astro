@@ -6,7 +6,7 @@ import Rojo from "../layouts/Rojo.astro";
     <div class="menu_top">
         <a class="activo" href="#">¿Qué es?</a>
         <a href="./historia">Historia</a>
-        <a href="#">Misión y Visión</a>
+        <a href="./misionyvision">Misión y Visión</a>
         <a href="#">Familia Salesina</a>
         <a href="#">Perfil de atendidos</a>
     </div>
@@ -51,8 +51,8 @@ import Rojo from "../layouts/Rojo.astro";
         .menu_top {
             grid-column: 13/42;
             grid-row: 3/6;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             align-items: center;
         }
 
@@ -63,6 +63,10 @@ import Rojo from "../layouts/Rojo.astro";
             color: #333333;
             text-decoration: none;
             transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .menu_top a:hover {
