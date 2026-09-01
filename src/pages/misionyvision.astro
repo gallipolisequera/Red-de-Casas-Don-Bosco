@@ -7,8 +7,8 @@ import Rojo from "../layouts/Rojo.astro";
         <a href="./">¿Qué es?</a>
         <a href="./historia">Historia</a>
         <a class="activo" href="#">Misión y Visión</a>
-        <a href="#">Familia Salesina</a>
-        <a href="#">Perfil de atendidos</a>
+        <a href="./familia">Familia Salesina</a>
+        <a href="./perfil">Perfil de atendidos</a>
     </div>
 
     <div class="bg_info">
@@ -47,7 +47,24 @@ import Rojo from "../layouts/Rojo.astro";
         </p>
     </div>
 
+    <div class="valores_info">
+        <img src="/misionyvision/info_valores.svg" alt="" />
+    </div>
+
     <style>
+        .valores_info {
+            display: none;
+            grid-column: 18/37;
+            grid-row: 14/21;
+            z-index: 2;
+            img {
+                height: 101%;
+            }
+        }
+        .menumision[data-visible="valores"] ~ .valores_info {
+            display: block;
+        }
+
         .info {
             grid-column: 15/41;
             grid-row: 10/16;

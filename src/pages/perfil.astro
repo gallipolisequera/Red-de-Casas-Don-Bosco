@@ -1,0 +1,96 @@
+---
+import Menuperfil from "../components/Menuperfil.astro";
+import Rojo from "../layouts/Rojo.astro";
+---
+
+<Rojo>
+    <div class="menu_top">
+        <a href="./">¿Qué es?</a>
+        <a href="./historia">Historia</a>
+        <a href="./misionyvision">Misión y Visión</a>
+        <a href="./familia">Familia Salesina</a>
+        <a class="activo" href="./perfil">Perfil de atendidos</a>
+    </div>
+
+    <div class="info">
+        <p id="infop" lang="es">
+            La población objetivo en las Casas Don Bosco son niños, adolescentes
+            y jóvenes entre 07 y 18 años de edad en las siguientes condiciones
+            de riesgo social En estas casas se les ofrece Salud, Educación,
+            Alimentación, Seguridad, Valores, Deporte y Recreación.
+        </p>
+    </div>
+
+    <div class="bg_perfil">
+        <img src="/perfil/bg_perfil.svg" alt="" />
+    </div>
+
+    <div class="perfil">
+        <Menuperfil />
+    </div>
+
+    <style>
+        .bg_perfil {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+            img {
+                height: 100%;
+            }
+        }
+
+        .info {
+            grid-column: 15/41;
+            grid-row: 10/14;
+            z-index: 2;
+            p {
+                hyphens: auto;
+                font-family: "Open Sans", sans-serif;
+                font-size: 1.143cqw;
+                font-weight: 500;
+                letter-spacing: -0.009em;
+                line-height: 1.571cqw;
+                margin: 0;
+            }
+        }
+
+        .perfil {
+            grid-column: 15/41;
+            grid-row: 14/23;
+            z-index: 2;
+        }
+
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #ff3545;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Rojo>
