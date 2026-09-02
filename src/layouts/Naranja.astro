@@ -24,33 +24,33 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 			</div>
 
 			<div id="curvaroja">
-				<img src="/menuiz/curvaroja.svg" alt="" />
+				<img src="/menuiz/curvanaranja.svg" alt="" />
 			</div>
 
 			<div id="menu_iz">
-				<a class="menu1" href="/"
-					><img src="/menuiz/menu1r.svg" alt="" /></a
-				>
 				<a class="menu2" href="#"
-					><img src="/menuiz/menu2r.svg" alt="" /></a
+					><img src="/menuiz/menu2n.svg" alt="" /></a
 				>
 				<a class="menu3" href="#"
-					><img src="/menuiz/menu3r.svg" alt="" /></a
+					><img src="/menuiz/menu3n.svg" alt="" /></a
 				>
 				<a class="menu4" href="#"
-					><img src="/menuiz/menu4r.svg" alt="" /></a
+					><img src="/menuiz/menu4n.svg" alt="" /></a
 				>
 				<a class="menu5" href="#"
-					><img src="/menuiz/menu5r.svg" alt="" /></a
+					><img src="/menuiz/menu5n.svg" alt="" /></a
 				>
 				<a class="menu6" href="#"
-					><img src="/menuiz/menu6r.svg" alt="" /></a
+					><img src="/menuiz/menu6n.svg" alt="" /></a
+				>
+				<a class="menu1" href="/"
+					><img src="/menuiz/menu1n.svg" alt="" /></a
 				>
 			</div>
 
 			<div class="navegadores">
-				<img class="flearriba" src="/carrusel/fleroja.svg" alt="" />
-				<img class="fleabajo" src="/carrusel/fleroja.svg" alt="" />
+				<img class="flearriba" src="/carrusel/flenaranja.svg" alt="" />
+				<img class="fleabajo" src="/carrusel/flenaranja.svg" alt="" />
 			</div>
 
 			<div class="carrusel1"></div>
@@ -60,7 +60,7 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 			<div class="bgcarrusel">
 				<img
 					class="rojo_bgcarru"
-					src="/carrusel/rojo_bgcarru.svg"
+					src="/carrusel/naranja_bgcarru.svg"
 					alt=""
 				/>
 			</div>
@@ -90,10 +90,7 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 </html>
 
 <script>
-	const imagenes = [
-		"/carrusel/r_img1.webp",
-		"/carrusel/r_img2.webp",
-	];
+	const imagenes = ["/carrusel/r_img1.webp", "/carrusel/r_img2.webp"];
 
 	const c1 = document.querySelector(".carrusel1");
 	const c2 = document.querySelector(".carrusel2");
@@ -362,9 +359,8 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 	}
 	.menu1 {
 		position: relative;
-		margin-bottom: 2.15cqw;
 		top: 0.45cqw;
-		left: 0.7cqw;
+		left: 2.9cqw;
 		img {
 			width: 9cqw;
 		}
@@ -372,9 +368,9 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 
 	.menu2 {
 		position: relative;
-		margin-bottom: 2.4cqw;
-		top: 0.7cqw;
-		left: 4.3cqw;
+		margin-bottom: 2.15cqw;
+		top: 0.4cqw;
+		left: 0.5cqw;
 
 		img {
 			width: 7.4cqw;
@@ -383,9 +379,9 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 
 	.menu3 {
 		position: relative;
-		margin-bottom: 2.95cqw;
+		margin-bottom: 2.85cqw;
 		top: 0.79cqw;
-		left: 0.7cqw;
+		left: 2cqw;
 
 		img {
 			width: 9.8cqw;
@@ -394,9 +390,9 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 
 	.menu4 {
 		position: relative;
-		margin-bottom: 2.2cqw;
+		margin-bottom: 2.38cqw;
 		top: 0.304cqw;
-		left: 2.25cqw;
+		left: 0.65cqw;
 
 		img {
 			width: 9.5cqw;
@@ -407,17 +403,18 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 		position: relative;
 		margin-bottom: 2.24cqw;
 		top: 0.425cqw;
-		left: 0.7cqw;
+		left: 1.9cqw;
 
 		img {
-			width: 10.7cqw;
+			width: 9.9cqw;
 		}
 	}
 
 	.menu6 {
 		position: relative;
-		top: 0.577cqw;
-		left: 1.9cqw;
+		margin-bottom: 2.5cqw;
+		top: 0.5cqw;
+		left: 0.65cqw;
 
 		img {
 			width: 9.9cqw;
@@ -466,6 +463,6 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 		container-type: size;
 		font-size: 1cqw;
 		font-family: "Open Sans", sans-serif;
-		background: #ff3545;
+		background: #ff8901;
 	}
 </style>
