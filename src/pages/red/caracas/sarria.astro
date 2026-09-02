@@ -1,0 +1,103 @@
+---
+import Naranja from "../../../layouts/Naranja.astro";
+import Menured from "../../../components/Menured.astro";
+---
+
+<Naranja>
+    <div class="menu_top">
+        <a class="activo" href="/">Caracas</a>
+        <a href="/quienes-somos">Valencia</a>
+        <a href="/que-hacemos">Mérida</a>
+        <a href="/red">Puerto la Cruz</a>
+        <a href="/hazte-socio">San Félix</a>
+        <a href="/hazte-socio">San Cristóbal</a>
+    </div>
+
+    <div class="submenu">
+        <a href=""><img src="/naranja/btn_sub2.svg" alt="" /></a>
+        <a href=""><img src="/naranja/btn_sub3.svg" alt="" /></a>
+    </div>
+
+    <div class="info">
+        <div class="ubicacion"></div>
+        <div class="caracteristicas"></div>
+        <div class="marco"></div>
+        <div class="contacto"></div>
+    </div>
+
+    <div class="menu_red">
+        <Menured />
+    </div>
+
+    <div class="bg_sarria">
+        <img src="/naranja/reddecasas/caracas/bg_sarria.svg" alt="" />
+    </div>
+
+    <style>
+        .submenu {
+            grid-column: 33/40;
+            grid-row: 6/9;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            img {
+                padding-left: 0.9cqw;
+                width: 5cqw;
+            }
+        }
+        .menu_red {
+            margin-top: 0.89cqw;
+            grid-column: 13/43;
+            grid-row: 19/22;
+            z-index: 2;
+        }
+        .info {
+            grid-column: 15/41;
+            grid-row: 10/19;
+            z-index: 2;
+        }
+
+        .bg_sarria {
+            margin-left: 0.5cqw;
+            margin-top: 1.25cqw;
+            grid-column: 12/44;
+            grid-row: 5/22;
+            z-index: 1;
+            img {
+                height: 99.4%; /* dimensiona el SVG */
+            }
+        }
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #ff8901;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Naranja>

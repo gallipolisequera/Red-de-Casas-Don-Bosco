@@ -3,31 +3,47 @@ import Naranja from "../../layouts/Naranja.astro";
 ---
 
 <Naranja>
-    <div class="menu_top">
-        <a class="activo" href="#">¿Qué es?</a>
-        <a href="/casas/historia">Historia</a>
-        <a href="/casas/misionyvision">Misión y Visión</a>
-        <a href="/casas/familia">Familia Salesina</a>
-        <a href="/casas/perfil">Perfil de atendidos</a>
-    </div>
-
     <div class="que_es">
         <p>
-            Es una Asociación Civil, sin fines de lucro, que brinda apoyo y
-            acompañamiento a <br />niños, niñas, adolescentes, jóvenes (NNAJ) y
-            sus familias que sufren severas situaciones de abandono económico,
-            social y moral, mediante la creación de obras y servicios, y la
-            realizacióde actividades educativas, deportivas, asistenciales,
-            culturales, tecnológicas, artísticas y religiosas, así como también
-            estimular a este fin a otras personas naturales o jurídicas, u
-            organizaciones.
+            La Red de Casas Don Bosco se extiende a lo largo del país para
+            brindar protección, educación y esperanza a la infancia y juventud
+            más vulnerable. Cada una de nuestras sedes responde con amor y
+            dedicación a los desafíos de su entorno local. Explora nuestro mapa
+            nacional, conoce las características que distinguen a cada casa<br
+            />
+            y encuentra los puntos de contacto para sumarte a nuestra labor.
         </p>
     </div>
-    <div class="bg_quees">
-        <img src="/rojo/que_es/bg_quees.svg" alt="" />
+
+    <div class="ver_casas">
+        <a href="/red/caracas/sarria"
+            ><img
+                src="/naranja/reddecasas/btn_vercasas.svg"
+                alt=""
+                class="ver"
+            /></a
+        >
+    </div>
+
+    <div class="bg_red">
+        <img src="/naranja/reddecasas/bg_red.svg" alt="" />
     </div>
 
     <style>
+        .ver_casas {
+            grid-column: 36/43;
+            grid-row: 21/24;
+            z-index: 2;
+            padding-top: 1.3cqw;
+            padding-left: 1.3cqw;
+            padding-right: 1cqw;
+        }
+        .ver_casas a img.ver {
+            transition: transform 0.25s ease;
+        }
+        .ver_casas a:hover img.ver {
+            transform: scale(1.05);
+        }
         .que_es {
             grid-column: 15/41;
             grid-row: 10/16;
@@ -43,10 +59,15 @@ import Naranja from "../../layouts/Naranja.astro";
             margin: 0;
         }
 
-        .bg_quees {
+        .bg_red {
+            margin-left: 0.4cqw;
+            margin-top: 0.5cqw;
             grid-column: 12/44;
-            grid-row: 6/23;
+            grid-row: 6/22;
             z-index: 1;
+            img {
+                height: 100%; /* dimensiona el SVG */
+            }
         }
         .menu_top {
             grid-column: 13/42;
