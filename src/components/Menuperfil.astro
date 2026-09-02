@@ -676,6 +676,23 @@
 	.menu_perfil[data-visible="6"] [data-activo="6"] {
 		display: block;
 	}
+
+	.menu_perfil[data-visible="1"] [data-btn="1"],
+	.menu_perfil[data-visible="2"] [data-btn="2"],
+	.menu_perfil[data-visible="3"] [data-btn="3"],
+	.menu_perfil[data-visible="4"] [data-btn="4"],
+	.menu_perfil[data-visible="5"] [data-btn="5"],
+	.menu_perfil[data-visible="6"] [data-btn="6"] {
+		display: none;
+	}
+
+	.menu_perfil [data-btn] {
+		transition: transform 0.25s ease;
+	}
+
+	.menu_perfil [data-btn]:hover {
+		transform: scale(1.12);
+	}
 </style>
 
 <script>

@@ -1,33 +1,56 @@
 ---
-import Rojo from "../layouts/Rojo.astro";
+import Rojo from "../../layouts/Rojo.astro";
 ---
 
 <Rojo>
     <div class="menu_top">
-        <a class="activo" href="#">¿Qué es?</a>
+        <a href="/">¿Qué es?</a>
         <a href="/casas/historia">Historia</a>
         <a href="/casas/misionyvision">Misión y Visión</a>
-        <a href="/casas/familia">Familia Salesina</a>
+        <a class="activo" href="/casas/familia">Familia Salesina</a>
         <a href="/casas/perfil">Perfil de atendidos</a>
     </div>
 
     <div class="que_es">
         <p>
-            Es una Asociación Civil, sin fines de lucro, que brinda apoyo y
-            acompañamiento a <br />niños, niñas, adolescentes, jóvenes (NNAJ) y
-            sus familias que sufren severas situaciones de abandono económico,
-            social y moral, mediante la creación de obras y servicios, y la
-            realizacióde actividades educativas, deportivas, asistenciales,
-            culturales, tecnológicas, artísticas y religiosas, así como también
-            estimular a este fin a otras personas naturales o jurídicas, u
-            organizaciones.
+            El legado de la Familia Salesiana de proteger a la juventud más
+            necesitada se materializa en Venezuela a través de la AC Red de
+            Casas Don Bosco. Guiada por este carisma, la institución estructura
+            su obra en una Casa Central y 8 sedes locales, traduciendo el amor
+            educativo en cifras de atención integral:
+        </p>
+
+        <p class="info2">
+            Estas casas cuentan con un equipo de educadores conformado por 222
+            personas. Exceptuando la Casa de Valencia, que todas las casas están
+            animadas por laicos.
         </p>
     </div>
-    <div class="bg_quees">
-        <img src="/rojo/que_es/bg_quees.svg" alt="" />
+    <div class="img_cifras">
+        <img src="/rojo/familia/img_cifras.svg" alt="" />
+    </div>
+
+    <div class="bg_familia">
+        <img src="/rojo/familia/bg_familia.svg" alt="" />
     </div>
 
     <style>
+        .bg_familia {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+        }
+        .info2 {
+            padding-top: 10.5cqw;
+        }
+        .img_cifras {
+            grid-column: 16/39;
+            grid-row: 15/19;
+            z-index: 2;
+            margin: 0 1cqw 0 1cqw;
+            img {
+            }
+        }
         .que_es {
             grid-column: 15/41;
             grid-row: 10/16;
