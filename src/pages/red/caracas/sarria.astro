@@ -19,21 +19,61 @@ import Menured from "../../../components/Menured.astro";
     </div>
 
     <div class="info">
-        <div class="ubicacion"></div>
-        <div class="caracteristicas"></div>
-        <div class="marco"></div>
-        <div class="contacto"></div>
+        <div class="ubicacion">
+            <p class="subtituloubi">Ubicación</p>
+            <p class="descripcion">
+                Corredor vial entre Av. Andrés Bello y Av. Libertador. La
+                Candelaria Caracas <br /> Municipio Libertador.
+            </p>
+            <a href=""><img src="/naranja/btn_explorar.svg" alt="" /></a>
+        </div>
+
+        <div class="caracteristicas">caracteristicas</div>
+
+        <div class="marco">marco</div>
+
+        <div class="contacto">contacto</div>
     </div>
 
-    <div class="menu_red">
-        <Menured />
-    </div>
+    <Menured />
 
     <div class="bg_sarria">
-        <img src="/naranja/reddecasas/caracas/bg_sarria.svg" alt="" />
+        <img src="/naranja/caracas/bg_sarria.svg" alt="" />
     </div>
 
     <style>
+        .ubicacion {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            img {
+                position: relative;
+                top: 1.5cqw;
+                right: 0.3cqw;
+                width: 10cqw;
+            }
+        }
+        .ubicacion a img {
+            transition: transform 0.25s ease;
+        }
+        .ubicacion a:hover img {
+            transform: scale(1.05);
+        }
+        .subtituloubi {
+            margin: 0;
+            color: #ff8901;
+            font-size: 1.214cqw;
+            font-weight: 700;
+        }
+        .descripcion {
+            margin-top: 0.3cqw !important;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
         .submenu {
             grid-column: 33/40;
             grid-row: 6/9;
@@ -44,12 +84,6 @@ import Menured from "../../../components/Menured.astro";
                 padding-left: 0.9cqw;
                 width: 5cqw;
             }
-        }
-        .menu_red {
-            margin-top: 0.89cqw;
-            grid-column: 13/43;
-            grid-row: 19/22;
-            z-index: 2;
         }
         .info {
             grid-column: 15/41;
