@@ -1,40 +1,32 @@
 ---
-import Naranja from "../../../layouts/Naranja.astro";
-import Menured from "../../../components/Menured.astro";
+import Naranja from "../../layouts/Naranja.astro";
+import Menured from "../../components/Menured.astro";
 ---
 
 <Naranja>
     <div class="menu_top">
-        <a class="activo" href="/red/caracas/sarria">Caracas</a>
+        <a href="/red/caracas/sarria">Caracas</a>
         <a href="/red/valencia">Valencia</a>
         <a href="/red/merida">Mérida</a>
         <a href="/red/puertolacruz">Puerto la Cruz</a>
-        <a href="/red/sanfelix">San Félix</a>
+        <a class="activo" href="/red/sanfelix">San Félix</a>
         <a href="/red/sancristobal">San Cristóbal</a>
-    </div>
-
-    <div class="submenu">
-        <a href="/red/caracas/domingosavio"
-            ><img src="/naranja/btn_sub2.svg" alt="" /></a
-        >
-        <a href="/red/caracas/central"
-            ><img src="/naranja/btn_sub3.svg" alt="" /></a
-        >
     </div>
 
     <div class="info">
         <div class="ubicacion">
             <p class="subtitulo">Ubicación</p>
             <p class="descripcion">
-                Corredor vial entre Av. Andrés Bello y Av. Libertador. La
-                Candelaria Caracas <br /> Municipio Libertador.
+                Urbanización, La Llovizna, calle María Brunett, al lado del
+                módulo asistencial, <br />
+                frente a la UDO.
             </p>
             <a href=""><img src="/naranja/btn_explorar.svg" alt="" /></a>
         </div>
 
         <div class="caracteristicas">
             <div class="caracteristicas-scroll">
-                <img src="/naranja/caracas/sarria_carac.svg" alt="" />
+                <img src="/naranja/sanfe/sanfe_carac.svg" alt="" />
             </div>
             <div class="caracteristicas-barra" aria-hidden="true">
                 <div class="caracteristicas-pista"></div>
@@ -47,24 +39,25 @@ import Menured from "../../../components/Menured.astro";
                 Consejo Municipal de Derechos de Niños, Niñas y Adolescentes
             </p>
             <p lang="es" class="descripcion">
-                El proyecto se encuentra formalmente inscrito ante el CMDNNA del
-                Municipio <br /> Libertador como un Programa de Apoyo u Orientación
-                bajo el amparo del Artículo<br />124, literal b) de la LOPNNA,
-                destinado a la gestión de casos, la restitución de derechos
-                vulnerados y el fortalecimiento de las capacidades de crianza en
-                el entorno <br />familiar y comunitario.
+                El proyecto se ejecuta bajo las modalidades formalmente
+                registradas de Abrigo (Art. 124, literal h), Apoyo u Orientación
+                a través del servicio diurno y psicosocial de Patio Abierto
+                (Art. 124, literal b), y Colocación Familiar en Entidad de
+                Atención (Art. 124, <br /> literal c), atendiendo tanto a beneficiarios
+                internos con medidas de protección como <br />a jóvenes externos
+                de la comunidad.
             </p>
         </div>
 
         <div class="contacto">
-            <img src="/naranja/caracas/sarria_contac.svg" alt="" />
+            <img src="/naranja/sanfe/sanfe_contac.svg" alt="" />
         </div>
     </div>
 
     <Menured />
 
-    <div class="bg_sarria">
-        <img src="/naranja/caracas/bg_sarria.svg" alt="" />
+    <div class="bg_valencia">
+        <img src="/naranja/sanfe/bg_sanfe.svg" alt="" />
     </div>
 
     <style>
@@ -189,7 +182,9 @@ import Menured from "../../../components/Menured.astro";
             z-index: 2;
         }
 
-        .bg_sarria {
+        .bg_valencia {
+            position: relative;
+            top: 0.08cqw;
             margin-left: 0.5cqw;
             margin-top: 1.25cqw;
             grid-column: 12/44;
