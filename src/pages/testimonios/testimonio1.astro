@@ -1,0 +1,67 @@
+---
+import Amarillo from "../../layouts/Amarillo.astro";
+import ScrollY from "../../components/ScrollY.astro";
+---
+
+<Amarillo testimonioActivo={1} title="Casas Don Bosco - Testimonio 1">
+    <div class="testimonio_contenido">
+        <ScrollY>
+        <p>
+            Mi nombre es Carlos González, tengo 20 años y hoy puedo decir con
+            orgullo que soy barbero profesional, dueño de mi propio camino. Mi
+            historia cambió por completo cuando apenas tenía 10 años y entré al
+            proyecto ARIS de la Casa Don Bosco de Sarría. En aquel entonces, yo
+            era un niño con una realidad difícil, un carácter sumamente rebelde
+            y una conducta bastante grosera con los demás. No sabía lo que era
+            la disciplina ni el respeto, pero en esta casa salesiana encontré
+            una verdadera familia que jamás se rindió conmigo.
+            <br />
+            <br />
+            Allí empezó un proceso de transformación integral que me enseñó las lecciones
+            más básicas y profundas de la vida. En la Casa Don Bosco aprendí desde
+            lo más sencillo, como sentarme a la mesa y utilizar correctamente los
+            cubiertos, hasta el valor de compartir con mis compañeros y dejar atrás
+            la agresividad. Fue el lugar donde calmé mi temperamento y entendí la
+            importancia de la convivencia armónica. Además, fue el espacio donde me
+            inicié en los sacramentos y me enamoré del carisma salesiano, aprendiendo
+            a ver a Dios en la alegría del servicio cotidiano.
+            <br /><br />
+            La institución no solo moldeó mi corazón y mis modales, sino que también
+            me brindó las herramientas para asegurar mi futuro laboral. Gracias al
+            apoyo incondicional de los educadores y a los talleres de la Casa Don
+            Bosco, descubrí mi pasión por la barbería y aprendí el oficio que hoy
+            me sustenta. Me dieron las tijeras, las máquinas y la confianza que necesitaba
+            para creer en mi propio talento. Hoy, como un joven egresado y productivo,
+            miro hacia atrás con profunda gratitud; la Casa Don Bosco de Sarría no
+            solo me educó, sino que me salvó la vida y me convirtió en el hombre de
+            bien que soy ahora."
+        </p>
+        </ScrollY>
+    </div>
+    <div class="bg_testimonios">
+        <img src="/amarillo/bg_1.svg" alt="" />
+    </div>
+
+    <style>
+        .testimonio_contenido {
+            grid-column: 15/41;
+            grid-row: 10/20;
+            z-index: 2;
+        }
+
+        .testimonio_contenido p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .bg_testimonios {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+        }
+    </style>
+</Amarillo>

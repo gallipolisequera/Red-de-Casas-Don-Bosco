@@ -1,0 +1,65 @@
+---
+import Amarillo from "../../layouts/Amarillo.astro";
+import ScrollY from "../../components/ScrollY.astro";
+---
+
+<Amarillo testimonioActivo={2} title="Casas Don Bosco - Testimonio 2">
+    <div class="testimonio_contenido">
+        <ScrollY>
+        <p>
+            Testimonio de un educador
+            <br /><br />
+
+            Me llamo Nando Martínez y llevo más de 20 años como educador en la
+            red de Casas Don Bosco, especialmente en la de Sarría. Tuve el
+            privilegio de estar en los inicios del proyecto ARIS junto al Padre
+            Rino Bergamin, realizando abordajes en la calle para buscar a los
+            muchachos más vulnerables. A lo largo de estas dos décadas, he sido
+            testigo de primera mano de cómo esta casa transforma vidas que
+            parecían perdidas, devolviéndoles la dignidad, el oficio y la fe a
+            cientos de jóvenes.
+            <br /><br />
+            Por supuesto, el camino también tiene sus dosis de dolor y confrontación.
+            Resulta profundamente frustrante ver a algunos muchachos que, a pesar
+            de todo el amor y las oportunidades que se les brindan, deciden no tomar
+            la opción de cambiar. Es un golpe duro para uno como educador, pero la
+            experiencia me ha enseñado que ningún esfuerzo es en vano: siempre queda
+            algo del carisma sembrado en el corazón de los jóvenes.
+            <br /><br />
+            Además, mi labor me ha permitido visitar otras casas a nivel nacional,
+            lo cual ha sido una experiencia fascinante. El contexto cultural de cada
+            joven varía muchísimo según su región; las costumbres y necesidades de
+            un muchacho del interior son muy distintas a las de la capital. Sin embargo,
+            lo hermoso es ver cómo, sin importar el origen o las diferencias culturales,
+            el sistema de Don Bosco funciona exactamente igual en todas partes, transformando
+            la realidad de nuestra juventud."
+        </p>
+        </ScrollY>
+    </div>
+    <div class="bg_testimonios">
+        <img src="/amarillo/bg_2.svg" alt="" />
+    </div>
+
+    <style>
+        .testimonio_contenido {
+            grid-column: 15/41;
+            grid-row: 10/20;
+            z-index: 2;
+        }
+
+        .testimonio_contenido p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .bg_testimonios {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+        }
+    </style>
+</Amarillo>

@@ -1,0 +1,123 @@
+---
+interface Props {
+	activo?: 0 | 1 | 2 | 3 | 4;
+}
+
+const { activo = 0 } = Astro.props;
+
+const items = [
+	{
+		num: 1,
+		href: "/testimonios/testimonio1",
+		btn: "/amarillo/btn_tes1.svg",
+		activoImg: "/amarillo/activo_tes1.svg",
+	},
+	{
+		num: 2,
+		href: "/testimonios/testimonio2",
+		btn: "/amarillo/btn_tes2.svg",
+		activoImg: "/amarillo/activo_tes2.svg",
+	},
+	{
+		num: 3,
+		href: "/testimonios/testimonio3",
+		btn: "/amarillo/btn_tes3.svg",
+		activoImg: "/amarillo/activo_tes3.svg",
+	},
+	{
+		num: 4,
+		href: "/testimonios/testimonio4",
+		btn: "/amarillo/btn_tes4.svg",
+		activoImg: "/amarillo/activo_tes4.svg",
+	},
+];
+---
+
+<div class="testimonios-nav" data-activo={activo}>
+	{
+		items.map((item) => (
+			<a
+				class={`testimonio-link t${item.num}`}
+				href={item.href}
+				data-num={item.num}
+			>
+				<img
+					class="btn-img"
+					src={item.btn}
+					alt=""
+					style={activo === item.num ? "display: none;" : undefined}
+				/>
+				<img
+					class="activo-img"
+					src={item.activoImg}
+					alt=""
+					style={activo !== item.num ? "display: none;" : undefined}
+				/>
+			</a>
+		))
+	}
+</div>
+
+<style>
+	.testimonios-nav {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 18.5cqw;
+		height: 100%;
+	}
+
+	.testimonio-link {
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 9cqw;
+		margin-bottom: -0.1cqw;
+		margin-left: -1cqw;
+		transition: transform 0.25s ease;
+	}
+
+	.testimonio-link:last-child {
+		margin-bottom: 0;
+	}
+
+	.testimonio-link:hover {
+		transform: scale(1.03);
+	}
+
+	.testimonio-link img {
+		position: absolute;
+		top: -0.5cqw;
+		left: 0.4cqw;
+		display: block;
+		width: 19cqw;
+	}
+
+	.testimonio-link.t1 .activo-img {
+		position: relative;
+		top: 1cqw;
+		width: 15.4cqw;
+		margin-left: 1.5cqw;
+	}
+
+	.testimonio-link.t2 .activo-img {
+		position: relative;
+		top: 1cqw;
+		width: 15.2cqw;
+		margin-left: 1.6cqw;
+	}
+
+	.testimonio-link.t3 .activo-img {
+		position: relative;
+		top: 1.1cqw;
+		width: 15cqw;
+		margin-left: 1.7cqw;
+	}
+
+	.testimonio-link.t4 .activo-img {
+		position: relative;
+		top: 1cqw;
+		width: 15.6cqw;
+		margin-left: 1.4cqw;
+	}
+</style>

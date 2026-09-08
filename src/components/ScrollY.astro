@@ -1,0 +1,153 @@
+---
+interface Props {
+	pista?: string;
+	thumb?: string;
+}
+
+const { pista = "#f6d77e", thumb = "#e8b618" } = Astro.props;
+---
+
+<div class="scroll-y">
+	<div class="scroll-y-area">
+		<slot />
+	</div>
+	<div class="scroll-y-barra" aria-hidden="true">
+		<div class="scroll-y-pista"></div>
+		<div class="scroll-y-thumb"></div>
+	</div>
+</div>
+
+<style define:vars={{ pista, thumb }}>
+	.scroll-y {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		overflow: visible;
+	}
+
+	.scroll-y-area {
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		scrollbar-width: none;
+	}
+
+	.scroll-y-area::-webkit-scrollbar {
+		display: none;
+	}
+
+	.scroll-y-barra {
+		position: absolute;
+		top: 0;
+		right: -1.5cqw;
+		height: 100%;
+		width: 1cqw;
+		touch-action: none;
+		user-select: none;
+		cursor: pointer;
+	}
+
+	.scroll-y-pista {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: calc(50% - 0.225cqw);
+		width: 0.45cqw;
+		border-radius: 999px;
+		background: var(--pista);
+	}
+
+	.scroll-y-thumb {
+		position: absolute;
+		top: 0;
+		left: calc(50% - 0.25cqw);
+		width: 0.5cqw;
+		height: 4cqw;
+		border-radius: 999px;
+		background: var(--thumb);
+		will-change: transform;
+	}
+</style>
+
+<script>
+	document.querySelectorAll(".scroll-y").forEach((scrollY) => {
+		const scroller = scrollY.querySelector(".scroll-y-area");
+		const barra = scrollY.querySelector(".scroll-y-barra");
+		const thumb = scrollY.querySelector(".scroll-y-thumb");
+
+		function maxTop() {
+			return scroller.clientHeight - thumb.offsetHeight;
+		}
+
+		function actualizar() {
+			if (scrollY.hidden) return;
+			const max = maxTop();
+			if (max <= 0 || scroller.scrollHeight <= scroller.clientHeight) {
+				barra.style.display = "none";
+				return;
+			}
+			barra.style.display = "";
+			const rango = scroller.scrollHeight - scroller.clientHeight;
+			const proporcion = scroller.scrollTop / rango;
+			thumb.style.transform = `translateY(${proporcion * max}px)`;
+		}
+
+		function scrollDesdeY(y) {
+			const max = maxTop();
+			if (max <= 0) return;
+			const proporcion = Math.min(
+				1,
+				Math.max(0, (y - thumb.offsetHeight / 2) / max),
+			);
+			scroller.scrollTop =
+				proporcion * (scroller.scrollHeight - scroller.clientHeight);
+		}
+
+		let arrastrando = false;
+
+		barra.addEventListener("pointerdown", (evento) => {
+			if (scrollY.hidden) return;
+			arrastrando = true;
+			barra.setPointerCapture(evento.pointerId);
+			scrollDesdeY(evento.clientY - barra.getBoundingClientRect().top);
+		});
+
+		barra.addEventListener("pointermove", (evento) => {
+			if (!arrastrando) return;
+			scrollDesdeY(evento.clientY - barra.getBoundingClientRect().top);
+		});
+
+		barra.addEventListener("pointerup", () => {
+			arrastrando = false;
+		});
+
+		barra.addEventListener("pointercancel", () => {
+			arrastrando = false;
+		});
+
+		barra.addEventListener(
+			"wheel",
+			(evento) => {
+				scroller.scrollTop += evento.deltaY;
+				evento.preventDefault();
+			},
+			{ passive: false },
+		);
+
+		scroller.addEventListener("scroll", actualizar, { passive: true });
+
+		const ro = new ResizeObserver(() => actualizar());
+		ro.observe(scrollY);
+
+		const mo = new MutationObserver(() => {
+			requestAnimationFrame(actualizar);
+		});
+		mo.observe(scrollY, {
+			attributes: true,
+			attributeFilter: ["hidden"],
+		});
+
+		actualizar();
+	});
+</script>

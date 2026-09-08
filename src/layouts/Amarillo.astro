@@ -1,10 +1,13 @@
 ---
+import TestimoniosNav from "../components/TestimoniosNav.astro";
+
 interface Props {
 	title?: string;
-	showGrid?: boolean;
+	testimonioActivo?: 0 | 1 | 2 | 3 | 4;
 }
 
-const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props;
+const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
+	Astro.props;
 ---
 
 <!doctype html>
@@ -24,16 +27,10 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 			</div>
 
 			<div id="curvaroja">
-				<img src="/menuiz/curvaroja.svg" alt="" />
+				<img src="/amarillo/curvaamarillo.svg" alt="" />
 			</div>
 
 			<div id="menu_iz">
-				<a class="menu1" href="/"
-					><img src="/menuiz/menu1r.svg" alt="" /></a
-				>
-				<a class="menu2" href="/red/reddecasas"
-					><img src="/menuiz/menu2r.svg" alt="" /></a
-				>
 				<a class="menu3" href="/testimonios/testimonios"
 					><img src="/menuiz/menu3r.svg" alt="" /></a
 				>
@@ -46,21 +43,25 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 				<a class="menu6" href="#"
 					><img src="/menuiz/menu6r.svg" alt="" /></a
 				>
+				<a class="menu1" href="/"
+					><img src="/menuiz/menu1r.svg" alt="" /></a
+				>
+				<a class="menu2" href="/red/reddecasas"
+					><img src="/menuiz/menu2r.svg" alt="" /></a
+				>
 			</div>
 
 			<div class="navegadores">
-				<img class="flearriba" src="/carrusel/fleroja.svg" alt="" />
-				<img class="fleabajo" src="/carrusel/fleroja.svg" alt="" />
+				<img class="flearriba" src="/amarillo/fleamarilla.svg" alt="" />
+				<img class="fleabajo" src="/amarillo/fleamarilla.svg" alt="" />
 			</div>
 
-			<div class="carrusel1"></div>
-
-			<div class="carrusel2"></div>
+			<TestimoniosNav activo={testimonioActivo} />
 
 			<div class="bgcarrusel">
 				<img
-					class="rojo_bgcarru"
-					src="/carrusel/rojo_bgcarru.svg"
+					class="amarillo_bgcarru"
+					src="/amarillo/amarillo_bgcarru.svg"
 					alt=""
 				/>
 			</div>
@@ -90,76 +91,30 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 </html>
 
 <script>
-	const imagenes = ["/carrusel/r_img1.webp", "/carrusel/r_img2.webp"];
+	const nav = document.querySelector(".testimonios-nav");
+	if (nav) {
+		const activo = parseInt(nav.dataset.activo || "0", 10);
+		const flearriba = document.querySelector(".flearriba");
+		const fleabajo = document.querySelector(".fleabajo");
 
-	const c1 = document.querySelector(".carrusel1");
-	const c2 = document.querySelector(".carrusel2");
-	const flearriba = document.querySelector(".flearriba");
-	const fleabajo = document.querySelector(".fleabajo");
+		const urls = [
+			"/testimonios/testimonios",
+			"/testimonios/testimonio1",
+			"/testimonios/testimonio2",
+			"/testimonios/testimonio3",
+			"/testimonios/testimonio4",
+		];
 
-	const total = imagenes.length;
-	const copias = 3;
-	let pos = total;
+		flearriba?.addEventListener("click", () => {
+			const prev = activo === 0 ? urls.length - 1 : activo - 1;
+			window.location.href = urls[prev];
+		});
 
-	function crearPista(contenedor) {
-		const pista = document.createElement("div");
-		pista.className = "pista";
-		for (let i = 0; i < copias; i++) {
-			for (const src of imagenes) {
-				const img = document.createElement("img");
-				img.src = src;
-				img.alt = "";
-				pista.appendChild(img);
-			}
-		}
-		contenedor.appendChild(pista);
-		return pista;
+		fleabajo?.addEventListener("click", () => {
+			const next = activo === urls.length - 1 ? 0 : activo + 1;
+			window.location.href = urls[next];
+		});
 	}
-
-	const pista1 = crearPista(c1);
-	const pista2 = crearPista(c2);
-
-	let pendiente = null;
-
-	function posicionar(sinTransicion) {
-		if (sinTransicion) {
-			pista1.style.transition = "none";
-			pista2.style.transition = "none";
-		}
-		pista1.style.transform = `translateY(-${pos * 100}cqh)`;
-		pista2.style.transform = `translateY(-${(pos + 1) * 100}cqh)`;
-		if (sinTransicion) {
-			void pista1.offsetWidth;
-			pista1.style.transition = "transform 0.6s ease";
-			pista2.style.transition = "transform 0.6s ease";
-		}
-	}
-
-	pista1.addEventListener("transitionend", () => {
-		if (pendiente !== null) {
-			pos = pendiente;
-			pendiente = null;
-			posicionar(true);
-		}
-	});
-
-	posicionar(true);
-
-	fleabajo.addEventListener("click", () => {
-		pos--;
-		if (pos <= 0) {
-			pendiente = total;
-		}
-		posicionar(false);
-	});
-
-	flearriba.addEventListener("click", () => {
-		pos++;
-		if (pos >= 2 * total) {
-			pendiente = total;
-		}
-		posicionar(false);
-	});
 </script>
 
 <style is:global>
@@ -213,7 +168,7 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 	body {
 		display: grid;
 		place-items: center;
-		background: #ffffff;
+		background: #fffff;
 	}
 
 	.footer {
@@ -254,16 +209,14 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 	}
 
 	.bgcarrusel {
-		grid-column: 46/56;
+		grid-column: 46/57;
 		grid-row: 3/25;
 		z-index: 1;
 	}
 
-	.rojo_bgcarru {
+	.amarillo_bgcarru {
 		position: relative;
-		right: 1cqw;
-		bottom: 0.8cqw;
-		width: 21.2cqw;
+		width: 17.5cqw;
 	}
 
 	.navegadores {
@@ -279,39 +232,11 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 		}
 	}
 
-	.carrusel1 {
+	.testimonios-nav {
 		z-index: 2;
-		grid-column: 47/55;
-		grid-row: 4/14;
-		border-radius: 2cqw;
-		margin-bottom: 0.9cqw;
-		overflow: hidden;
-		position: relative;
-		container-type: size;
-	}
-
-	.carrusel2 {
-		z-index: 2;
-		grid-column: 47/55;
-		grid-row: 14/24;
-		border-radius: 2cqw;
-		margin-top: 0.9cqw;
-		overflow: hidden;
-		position: relative;
-		container-type: size;
-	}
-
-	.pista {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		img {
-			display: block;
-			width: 100%;
-			height: 100cqh;
-			flex-shrink: 0;
-			object-fit: cover;
-		}
+		grid-column: 46/57;
+		grid-row: 4/25;
+		padding: 0.5cqw 0;
 	}
 
 	.flearriba,
@@ -320,16 +245,16 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 		transition: transform 0.25s ease;
 	}
 
-	.flearriba {
+	.fleabajo {
 		transform: rotate(180deg);
 	}
 
 	.flearriba:hover {
-		transform: rotate(180deg) scale(1.15);
+		transform: scale(1.15);
 	}
 
 	.fleabajo:hover {
-		transform: scale(1.15);
+		transform: rotate(180deg) scale(1.15);
 	}
 
 	#logo {
@@ -380,8 +305,8 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 
 	.menu3 {
 		position: relative;
-		margin-bottom: 2.95cqw;
-		top: 0.79cqw;
+		margin-bottom: 2.94cqw;
+		top: 0.5cqw;
 		left: 0.7cqw;
 
 		img {
@@ -391,8 +316,8 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 
 	.menu4 {
 		position: relative;
-		margin-bottom: 2.2cqw;
-		top: 0.304cqw;
+		margin-bottom: 1.94cqw;
+		top: cqw;
 		left: 2.25cqw;
 
 		img {
@@ -413,6 +338,7 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 
 	.menu6 {
 		position: relative;
+		margin-bottom: 2.46cqw;
 		top: 0.577cqw;
 		left: 1.9cqw;
 
@@ -463,6 +389,6 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 		container-type: size;
 		font-size: 1cqw;
 		font-family: "Open Sans", sans-serif;
-		background: #ff3545;
+		background: #e8b618;
 	}
 </style>

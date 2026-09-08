@@ -1,0 +1,42 @@
+---
+import Amarillo from "../../layouts/Amarillo.astro";
+---
+
+<Amarillo testimonioActivo={4} title="Casas Don Bosco - Testimonio 4">
+    <div class="testimonio_contenido">
+        <p>
+            Casa Don Bosco no solo me dio un techo y educación cuando más lo
+            necesitaba, me dio una familia y herramientas para salir adelante.
+            Hoy, regresar como instructor para enseñar un oficio a los jóvenes
+            que están en el lugar donde yo alguna vez estuve, es mi forma de
+            cerrar el círculo. Este lugar demuestra que cuando le das una
+            oportunidad a un joven, transformas su futuro por completo.
+        </p>
+    </div>
+    <div class="bg_testimonios">
+        <img src="/amarillo/bg_4.svg" alt="" />
+    </div>
+
+    <style>
+        .testimonio_contenido {
+            grid-column: 15/41;
+            grid-row: 10/16;
+            z-index: 2;
+        }
+
+        .testimonio_contenido p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .bg_testimonios {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+        }
+    </style>
+</Amarillo>

@@ -1,0 +1,75 @@
+---
+import Amarillo from "../../layouts/Amarillo.astro";
+---
+
+<Amarillo testimonioActivo={0}>
+    <div class="que_es">
+        <p>
+            Detrás de cada número y cada programa de apoyo, existen personas y
+            trayectorias de superación que dan sentido a nuestra labor. En este
+            espacio, compartimos los testimonios de jóvenes que, con valentía y
+            el acompañamiento de la Red de Casas Don Bosco, han transformado los
+            obstáculos en oportunidades. Estas historias no solo narran un
+            pasado superado, sino la construcción de un futuro lleno de
+            propósito y esperanza.
+        </p>
+    </div>
+    <div class="bg_testimonios">
+        <img src="/amarillo/bg_testimonios.svg" alt="" />
+    </div>
+
+    <style>
+        .que_es {
+            grid-column: 15/41;
+            grid-row: 10/16;
+            z-index: 2;
+        }
+
+        .que_es p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .bg_testimonios {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+        }
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #e8b618;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Amarillo>
