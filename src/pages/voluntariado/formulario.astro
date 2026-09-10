@@ -1,0 +1,391 @@
+---
+import Azul from "../../layouts/Azul.astro";
+---
+
+<Azul>
+    <div class="que_es">
+        <p class="subtitulo">Datos Personales Basicos</p>
+
+        <p class="disponibilidad">
+            Disponibilidad ¿En qué días y bloques de horario podrías prestar tu
+            apoyo o servicio voluntario?
+        </p>
+        <p class="info">Puedes ajustarlas según tus necesidades:</p>
+    </div>
+
+    <form class="formulario">
+        <div class="campo campo_nombre">
+            <input type="text" name="nombre" aria-label="Nombre" />
+        </div>
+        <div class="campo campo_edad">
+            <input
+                type="text"
+                name="edad"
+                inputmode="numeric"
+                aria-label="Edad"
+            />
+        </div>
+        <div class="campo campo_telefono">
+            <select name="codigo_pais" aria-label="Código de país">
+                <option value="+58">+58</option>
+            </select>
+            <input type="tel" name="telefono" aria-label="Teléfono" />
+        </div>
+        <div class="campo campo_correo">
+            <input type="email" name="correo" aria-label="Correo" />
+        </div>
+        <div class="campo campo_ocupacion">
+            <input type="text" name="ocupacion" aria-label="Ocupación" />
+        </div>
+        <div class="campo campo_lunes">
+            <label class="opcion opcion_mananas"
+                ><input type="checkbox" name="lunes" value="mananas" /><span
+                    >Mañanas</span
+                ></label
+            >
+            <label class="opcion opcion_tardes"
+                ><input type="checkbox" name="lunes" value="tardes" /><span
+                    >Tardes</span
+                ></label
+            >
+        </div>
+        <div class="campo campo_otro">
+            <input type="text" name="otro" aria-label="Otro" />
+        </div>
+        <div class="campo campo_findesemana">
+            <label class="opcion opcion_mananas"
+                ><input
+                    type="checkbox"
+                    name="findesemana"
+                    value="mananas"
+                /><span>Mañanas</span></label
+            >
+            <label class="opcion opcion_tardes"
+                ><input
+                    type="checkbox"
+                    name="findesemana"
+                    value="tardes"
+                /><span>Tardes</span></label
+            >
+        </div>
+    </form>
+
+    <div class="ver_casas">
+        <a href=""
+            ><img src="/azul/formulario/btn_enviar.svg" alt="" class="ver" /></a
+        >
+    </div>
+
+    <div class="bg_red">
+        <img src="/azul/bg_formulario.svg" alt="" />
+    </div>
+
+    <style>
+        .info {
+            position: relative;
+            margin: 0;
+            bottom: -0.5cqw;
+            padding: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.08cqw !important;
+            font-weight: 500;
+            letter-spacing: -0.033em !important;
+            line-height: 1.571cqw;
+        }
+        .disponibilidad {
+            position: relative;
+            margin: 0;
+            bottom: -0.2cqw;
+            padding: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.033em !important;
+            line-height: 1.571cqw;
+        }
+
+        .que_es p.disponibilidad {
+            margin-top: auto;
+        }
+        .img_volun {
+            position: relative;
+            top: 0.4cqw;
+            right: 0.1cqw;
+            width: 100%;
+        }
+        .subtitulo {
+            font-family: "Open Sans", sans-serif;
+            position: relative;
+            bottom: 0.3cqw;
+            margin: 0;
+            color: #000000;
+            font-size: 1.29cqw !important;
+            font-weight: 600 !important;
+        }
+        .ver_casas {
+            padding-top: 1cqw;
+            grid-column: 31/40;
+            grid-row: 19/22;
+            z-index: 2;
+            img {
+                width: 101%;
+            }
+        }
+        .ver_casas a img.ver {
+            transition: transform 0.25s ease;
+        }
+        .ver_casas a:hover img.ver {
+            transform: scale(1.05);
+        }
+        .que_es {
+            padding-top: 0.9cqw;
+            grid-column: 15/42;
+            grid-row: 9/17;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+
+        .que_es p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .formulario {
+            display: contents;
+        }
+
+        .campo {
+            position: relative;
+            z-index: 2;
+        }
+
+        .campo_nombre {
+            grid-column: 15/26;
+            grid-row: 11/12;
+            background: url("/azul/formulario/campo_nombre.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_edad {
+            grid-column: 27/31;
+            grid-row: 11/12;
+            background: url("/azul/formulario/campo_edad.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_telefono {
+            grid-column: 32/41;
+            grid-row: 11/12;
+            background: url("/azul/formulario/campo_telefono.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_correo {
+            grid-column: 15/26;
+            grid-row: 13/14;
+            background: url("/azul/formulario/campo_correo.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_ocupacion {
+            grid-column: 27/39;
+            grid-row: 13/14;
+            background: url("/azul/formulario/campo_ocupacion.svg") center /
+                100% 100% no-repeat;
+        }
+
+        .campo_lunes {
+            grid-column: 15/29;
+            grid-row: 18/19;
+            background: url("/azul/formulario/campo_lunes.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_otro {
+            grid-column: 30/41;
+            grid-row: 18/19;
+            background: url("/azul/formulario/campo_otro.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_findesemana {
+            grid-column: 15/29;
+            grid-row: 20/21;
+            background: url("/azul/formulario/campo_findesemana.svg") center /
+                100% 100% no-repeat;
+        }
+
+        .campo > input {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 80%;
+            border: 0;
+            outline: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1cqw;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .campo > input::placeholder {
+            color: #9aa0a6;
+        }
+
+        .campo_nombre input {
+            left: 35%;
+            right: 3%;
+        }
+
+        .campo_edad input {
+            left: 57%;
+            right: 4%;
+        }
+
+        .campo_telefono select {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 41%;
+            width: 18%;
+            height: 80%;
+            border: 0;
+            outline: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1cqw;
+            font-weight: 600;
+            color: #333333;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .campo_telefono input {
+            left: 55%;
+            right: 3%;
+        }
+
+        .campo_correo input {
+            left: 30%;
+            right: 3%;
+        }
+
+        .campo_ocupacion input {
+            left: 32%;
+            right: 4%;
+        }
+
+        .campo_otro input {
+            left: 18%;
+            right: 9%;
+        }
+
+        .opcion {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.35cqw;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1cqw;
+            font-weight: 600;
+            color: #333333;
+            cursor: pointer;
+        }
+
+        .opcion_mananas {
+            left: 44%;
+        }
+
+        .opcion_tardes {
+            left: 72%;
+        }
+
+        .opcion input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+            width: 0.9cqw;
+            height: 0.9cqw;
+            margin: 0;
+            flex-shrink: 0;
+            border: 0.12cqw solid #00c2de;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+        .opcion input[type="checkbox"]:checked {
+            background: #00c2de;
+        }
+
+        .opcion input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0.3cqw;
+            height: 0.55cqw;
+            border: solid #ffffff;
+            border-width: 0 0.12cqw 0.12cqw 0;
+            transform: translate(-50%, -60%) rotate(45deg);
+        }
+
+        .bg_red {
+            margin-left: 0.4cqw;
+            margin-top: 0.5cqw;
+            grid-column: 12/44;
+            grid-row: 5/23;
+            z-index: 1;
+            img {
+                height: 101%; /* dimensiona el SVG */
+            }
+        }
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #ff3545;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Azul>

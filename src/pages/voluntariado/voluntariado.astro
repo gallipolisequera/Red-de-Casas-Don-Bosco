@@ -1,0 +1,119 @@
+---
+import Azul from "../../layouts/Azul.astro";
+---
+
+<Azul>
+    <div class="que_es">
+        <p class="subtitulo">
+            Bienvenido/a al formulario de registro de voluntariado
+        </p>
+        <p>
+            Para iniciar tu proceso de postulación y coordinar tu apoyo en la
+            Casa Hogar seleccionada, por favor asegúrate de cumplir con las
+            siguientes condiciones generales:
+        </p>
+        <img class="img_volun" src="/azul/img_voluntariado.svg" alt="" />
+    </div>
+
+    <div class="ver_casas">
+        <a href="/voluntariado/formulario"
+            ><img src="/azul/btn_hazte.svg" alt="" class="ver" /></a
+        >
+    </div>
+
+    <div class="bg_red">
+        <img src="/azul/bg_requi.svg" alt="" />
+    </div>
+
+    <style>
+        .img_volun {
+            position: relative;
+            top: 0.4cqw;
+            right: 0.1cqw;
+            width: 100%;
+        }
+
+        .subtitulo {
+            font-family: "Open Sans", sans-serif;
+            position: relative;
+            bottom: 0.3cqw;
+            margin: 0;
+            color: #000000;
+            font-size: 1.29cqw !important;
+            font-weight: 600 !important;
+        }
+
+        .ver_casas {
+            padding-top: 1cqw;
+            grid-column: 36/43;
+            grid-row: 21/24;
+            z-index: 2;
+            img {
+                width: 101%;
+            }
+        }
+        .ver_casas a img.ver {
+            transition: transform 0.25s ease;
+        }
+        .ver_casas a:hover img.ver {
+            transform: scale(1.05);
+        }
+        .que_es {
+            grid-column: 15/41;
+            grid-row: 10/16;
+            z-index: 2;
+        }
+
+        .que_es p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .bg_red {
+            margin-left: 0.4cqw;
+            margin-top: 0.5cqw;
+            grid-column: 12/44;
+            grid-row: 6/22;
+            z-index: 1;
+            img {
+                height: 101%; /* dimensiona el SVG */
+            }
+        }
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #ff3545;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Azul>
