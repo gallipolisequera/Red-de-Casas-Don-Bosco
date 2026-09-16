@@ -1,0 +1,25 @@
+junio:
+- jun1: t=06 de junio| sub=Aniversario | info=Te invitamos a ser parte de esta celebración tan especial y a conmemorar juntos la historia de este refugio de esperanza. Conoce de cerca los rostros, los logros y las vivencias que han tejido este hermoso legado de amor y solidaridad. 
+- jun2: t=Última semana | sub=Semana aniversario | info=Descubre las actividades, los logros y el calor humano que caracterizan a esta gran familia en Puerto la Cruz, y sé parte de un homenaje vivo a la solidaridad y al compromiso social.
+
+agosto:
+- ago1: t=20 de agosto | sub=Cierre de año escolar | info=Celebrando un camino recorrido con amor y constancia, donde cada vivencia se convierteen la semilla de un futuro más prometedor y en la prueba palpable de que la esperanza siempre da frutos.
+
+septiembre:
+- sep1: t=03 de septiembre | sub=Aniversario | info=Te invitamos a ser parte deesta celebración tan especial ya conmemorar juntos la historia de este refugio de esperanza. Conoce de cerca los rostros, los logros y las vivencias que han tejido este hermoso legado de amor y solidaridad.
+- sep2: t=08 de septiembre | sub=La virgen del valle | info=Conoce cómo la devoción a la Vallita une a nuestra comunidad en un abrazo de gratitud y esperanza, inspirando la generosidad y el cuidado mutuo
+
+octubre:
+- oct1: t=02 de octubre | sub=Aniversario | info=Te invitamos a ser parte deesta celebración tan especial ya conmemorar juntos la historia de este refugio de esperanza. Conoce de cerca los rostros, los logros y las vivencias que han tejido este hermoso legado de amor y solidaridad.
+- oct2: t=08 de octubre| sub=Aniversario | info=Conmemorar el aniversario de la casa hogar es detenersea mirar el camino recorridoy celebrar los años de entrega, refugio y transformaciónque han marcado la vida de 
+tantas  generaciones.
+- oct3: t=18 de octubre | sub=El Rosario | info=Te invitamos a ser parte deesta celebración tan especial y
+a conmemorar juntos la historia de este refugio de esperanza. Conoce de cerca los rostros, los logros y las vivencias que han tejido este hermoso legado de amor y solidaridad.
+
+noviembre:
+- nov1: t=31 de noviembre | sub=DÍa del abrazo en familia | info=Cada segundo domingo de noviembre se celebra el Día del Abrazo en Familia, una fecha concebida para revalorizar el núcleo familiar como el primer espacio de afecto, contención y formación en valores.
+
+diciembre:
+- dic1: t=08 de diciembre | sub=Jornada de reacudación | info=Es un espacio para sumar voluntades y transformar la empatía en recursos reales, asegurando que las puertas de este hogar permanezcan siempre abiertas con los brazos listos para acoger a quienes más lo necesitan.
+- dic2: t=08 de diciembre | sub=Jornada de reacudación | info=Con tu aporte, por pequeño que parezca, contribuyes directamente a mantener encendida la esperanza y a brindarles a nuestros jóvenes las herramientas necesarias para construir un futuro digno.
+- dic3: t=08 de diciembre | sub=Aniversario | info=Conmemorar el aniversario de la casa hogar es detenersea mirar el camino recorridoy celebrar los años de entrega, refugio y transformaciónque han marcado la vida de tantas  generaciones.

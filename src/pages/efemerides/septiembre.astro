@@ -1,0 +1,212 @@
+---
+import Verde from "./../../layouts/Verde.astro";
+---
+
+<Verde>
+    <div class="menu_top">
+        <a href="/efemerides/enero">Ene</a>
+        <a href="/efemerides/mayo">May</a>
+        <a href="/efemerides/junio">Jun</a>
+        <a href="/efemerides/agosto">Ago</a>
+        <a class="activo" href="/efemerides/septiembre">Sep</a>
+        <a href="/efemerides/octubre">Oct</a>
+        <a href="/efemerides/noviembre">Nov</a>
+        <a href="/efemerides/diciembre">Dic</a>
+    </div>
+
+    <div class="titulo">
+        <p class="t">03 de septiembre</p>
+        <p class="sub">Aniversario</p>
+    </div>
+    <div class="info">
+        Te invitamos a ser parte de esta celebración tan especial y a
+        conmemorar juntos la historia de este refugio de esperanza. Conoce de
+        cerca los rostros, los logros y las vivencias que han tejido este
+        hermoso legado de amor y solidaridad.
+    </div>
+
+    <div class="eventos" data-evento="1">
+        <button class="evento" data-evento="1" type="button">
+            <img class="btn" src="/verde/btn_sep1.svg" alt="" />
+            <img class="activo" src="/verde/activo_sep1.svg" alt="" />
+        </button>
+        <button class="evento" data-evento="2" type="button">
+            <img class="btn" src="/verde/btn_sep2.svg" alt="" />
+            <img class="activo" src="/verde/activo_sep2.svg" alt="" />
+        </button>
+    </div>
+    <div class="bg_quees">
+        <img src="/verde/bg_septiembre.svg" alt="" />
+    </div>
+
+    <style>
+        .titulo {
+            grid-column: 47/55;
+            grid-row: 4/7;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .t {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.428cqw;
+            font-weight: 700;
+            letter-spacing: -0.009em;
+            line-height: 1.964cqw;
+            margin: 0;
+            color: #ffffff;
+        }
+        .sub {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.375cqw;
+            margin: 0;
+            color: #ffffff;
+        }
+        .info {
+            grid-column: 47/55;
+            grid-row: 8/18;
+            z-index: 2;
+            font-family: "Open Sans", sans-serif;
+            font-size: 0.928cqw;
+            font-weight: 500;
+            line-height: 1.6cqw;
+            color: #333333;
+        }
+        .eventos {
+            position: absolute;
+            grid-column: 14/42;
+            grid-row: 9/18;
+            z-index: 2;
+            margin-left: 0.5cqw;
+            display: flex;
+        }
+
+        .evento {
+            position: relative;
+            background: none;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+
+        .evento:hover {
+            transform: scale(1.03);
+        }
+
+        .evento .btn {
+            position: relative;
+            display: block;
+            height: 15cqw;
+        }
+
+        .evento .activo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 15cqw;
+            display: none;
+        }
+
+        .eventos[data-evento="1"] .evento[data-evento="1"] .btn,
+        .eventos[data-evento="2"] .evento[data-evento="2"] .btn {
+            visibility: hidden;
+        }
+
+        .eventos[data-evento="1"] .evento[data-evento="1"] .activo,
+        .eventos[data-evento="2"] .evento[data-evento="2"] .activo {
+            display: block;
+        }
+
+        .evento[data-evento="2"] {
+            right: 2cqw;
+        }
+
+        .que_es p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .bg_quees {
+            grid-column: 12/44;
+            grid-row: 6/23;
+            z-index: 1;
+        }
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #00ba71;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Verde>
+
+<script>
+    const data = {
+        1: {
+            t: "03 de septiembre",
+            sub: "Aniversario",
+            info: "Te invitamos a ser parte de esta celebración tan especial y a conmemorar juntos la historia de este refugio de esperanza. Conoce de cerca los rostros, los logros y las vivencias que han tejido este hermoso legado de amor y solidaridad.",
+        },
+        2: {
+            t: "08 de septiembre",
+            sub: "La virgen del valle",
+            info: "Conoce cómo la devoción a la Vallita une a nuestra comunidad en un abrazo de gratitud y esperanza, inspirando la generosidad y el cuidado mutuo.",
+        },
+    };
+
+    const eventos = document.querySelector(".eventos");
+    if (eventos) {
+        const t = document.querySelector(".titulo .t");
+        const sub = document.querySelector(".titulo .sub");
+        const info = document.querySelector(".info");
+
+        eventos.querySelectorAll(".evento").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const n = btn.dataset.evento;
+                const d = data[n];
+                if (!d) return;
+                eventos.dataset.evento = n;
+                t.textContent = d.t;
+                sub.textContent = d.sub;
+                info.textContent = d.info;
+            });
+        });
+    }
+</script>
