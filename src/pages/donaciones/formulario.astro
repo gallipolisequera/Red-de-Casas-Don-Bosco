@@ -1,0 +1,444 @@
+---
+import Morado from "../../layouts/Morado.astro";
+---
+
+<Morado>
+    <div class="que_es">
+        <p class="subtitulo">Datos Del Donante</p>
+    </div>
+
+    <p class="disponibilidad">¿A qué sede deseas aportar?</p>
+
+    <form class="formulario">
+        <div class="campo campo_nombre">
+            <input
+                type="text"
+                name="nombre"
+                placeholder="Tu nombre y apellido"
+                aria-label="Nombre"
+            />
+        </div>
+        <div class="campo campo_cedula">
+            <select name="letra_cedula" aria-label="Letra de cédula">
+                <option value="V" selected>V</option>
+                <option value="E">E</option>
+                <option value="P">P</option>
+                <option value="J">J</option>
+                <option value="G">G</option>
+            </select>
+            <span class="flecha" aria-hidden="true">⌵</span>
+            <input
+                type="text"
+                name="cedula"
+                inputmode="numeric"
+                placeholder="Tu cédula"
+                aria-label="Cédula"
+            />
+        </div>
+        <div class="campo campo_telefono">
+            <select name="codigo_pais" aria-label="Código de país">
+                <option value="+58">+58</option>
+            </select>
+            <span class="flecha" aria-hidden="true">⌵</span>
+            <input
+                type="tel"
+                name="telefono"
+                placeholder="Tu teléfono"
+                aria-label="Teléfono"
+            />
+        </div>
+        <div class="campo campo_correo">
+            <input
+                type="email"
+                name="correo"
+                placeholder="Tu correo electrónico"
+                aria-label="Correo"
+            />
+        </div>
+        <div class="campo campo_tipo">
+            <label class="opcion opcion_ropa"
+                ><input type="checkbox" name="tipo" value="ropa" /><span
+                    >Ropa</span
+                ></label
+            >
+            <label class="opcion opcion_utiles"
+                ><input type="checkbox" name="tipo" value="utiles" /><span
+                    >Útiles</span
+                ></label
+            >
+            <label class="opcion opcion_limpieza"
+                ><input type="checkbox" name="tipo" value="limpieza" /><span
+                    >Prod.de Limpieza</span
+                ></label
+            >
+            <label class="opcion opcion_dinero"
+                ><input type="checkbox" name="tipo" value="dinero" /><span
+                    >Dinero</span
+                ></label
+            >
+        </div>
+        <div class="campo campo_sede">
+            <select name="sede" aria-label="Sede">
+                <option value="Oficina Central - Caracas" selected>
+                    Oficina Central - Caracas
+                </option>
+                <option value="Casa Don Bosco Sarría – Caracas">
+                    Casa Don Bosco Sarría – Caracas
+                </option>
+                <option value="Casa Hogar Domingo Savio – Caracas">
+                    Casa Hogar Domingo Savio – Caracas
+                </option>
+                <option value="Casa Don Bosco - Valencia">
+                    Casa Don Bosco - Valencia
+                </option>
+                <option value="Fundación Don Bosco - Mérida">
+                    Fundación Don Bosco - Mérida
+                </option>
+                <option value="Casa Don Bosco Puerto La Cruz">
+                    Casa Don Bosco Puerto La Cruz
+                </option>
+                <option value="Casa Hogar Miguel Magone – San Félix">
+                    Casa Hogar Miguel Magone – San Félix
+                </option>
+                <option value="Ciudad de Los Muchachos – San Cristóbal">
+                    Ciudad de Los Muchachos – San Cristóbal
+                </option>
+            </select>
+            <span class="flecha" aria-hidden="true">⌵</span>
+        </div>
+    </form>
+
+    <div class="ver_casas">
+        <a href=""
+            ><img
+                src="/morado/formulario/btn_enviar.svg"
+                alt=""
+                class="ver"
+            /></a
+        >
+    </div>
+
+    <div class="bg_red">
+        <img src="/morado/bg_formulario.svg" alt="" />
+    </div>
+
+    <style>
+        .disponibilidad {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.29cqw !important;
+            font-weight: 600 !important;
+            letter-spacing: -0.033em !important;
+            line-height: 1.571cqw;
+            grid-column: 15/42;
+            grid-row: 17/18;
+            z-index: 2;
+        }
+
+        .subtitulo {
+            font-family: "Open Sans", sans-serif;
+            position: relative;
+            bottom: 0.3cqw;
+            margin: 0;
+            color: #000000;
+            font-size: 1.29cqw !important;
+            font-weight: 600 !important;
+        }
+        .ver_casas {
+            position: relative;
+            bottom: 0.5cqw;
+            left: 0.5cqw;
+            padding-left: 0.6cqw;
+            grid-column: 33/40;
+            grid-row: 19/22;
+            z-index: 2;
+            img {
+                width: 101%;
+            }
+        }
+        .ver_casas a img.ver {
+            transition: transform 0.25s ease;
+        }
+        .ver_casas a:hover img.ver {
+            transform: scale(1.05);
+        }
+        .que_es {
+            padding-top: 0.9cqw;
+            grid-column: 15/42;
+            grid-row: 9/11;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+
+        .que_es p {
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.143cqw;
+            font-weight: 500;
+            letter-spacing: -0.009em;
+            line-height: 1.571cqw;
+            margin: 0;
+        }
+
+        .formulario {
+            display: contents;
+        }
+
+        .campo {
+            position: relative;
+            z-index: 2;
+        }
+
+        .campo_nombre {
+            grid-column: 15/27;
+            grid-row: 11/12;
+            background: url("/morado/formulario/campo_nombre.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_cedula {
+            grid-column: 28/40;
+            grid-row: 11/12;
+            background: url("/morado/formulario/campo_cedula.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_telefono {
+            grid-column: 15/27;
+            grid-row: 13/14;
+            background: url("/morado/formulario/campo_telefono.svg") center /
+                100% 100% no-repeat;
+        }
+
+        .campo_correo {
+            grid-column: 28/40;
+            grid-row: 13/14;
+            background: url("/morado/formulario/campo_correo.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo_tipo {
+            grid-column: 15/40;
+            grid-row: 15/16;
+            background: url("/morado/formulario/campo_tipo.svg") center / 100%
+                102% no-repeat;
+        }
+
+        .campo_sede {
+            grid-column: 15/32;
+            grid-row: 19/20;
+            background: url("/morado/formulario/campo_sede.svg") center / 100%
+                100% no-repeat;
+        }
+
+        .campo > input,
+        .campo > select {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 80%;
+            border: 0;
+            outline: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1cqw;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .campo > select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .campo > input::placeholder {
+            color: #9aa0a6;
+        }
+
+        .campo_nombre input {
+            left: 32%;
+            right: 3%;
+        }
+
+        .campo_cedula select {
+            left: 52%;
+            width: 10%;
+            color: #903c99;
+            font-weight: 700;
+        }
+
+        .campo_cedula select option {
+            color: #903c99;
+            font-weight: 700;
+        }
+
+        .campo_cedula .flecha {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 55%;
+            color: #903c99;
+            font-weight: 700;
+            font-size: 1cqw;
+            pointer-events: none;
+        }
+
+        .campo_cedula input {
+            left: 60%;
+            right: 3%;
+        }
+
+        .campo_telefono select {
+            left: 32%;
+            width: 18%;
+            color: #903c99;
+        }
+
+        .campo_telefono .flecha {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 40%;
+            color: #903c99;
+            font-weight: 600;
+            font-size: 1cqw;
+            pointer-events: none;
+        }
+
+        .campo_telefono input {
+            left: 45%;
+            right: 3%;
+        }
+
+        .campo_correo input {
+            left: 28%;
+            right: 3%;
+        }
+
+        .campo_sede select {
+            left: 38%;
+            right: 3%;
+        }
+
+        .campo_sede .flecha {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 3%;
+            color: #903c99;
+            font-weight: 600;
+            font-size: 1cqw;
+            pointer-events: none;
+        }
+
+        .opcion {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.35cqw;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1cqw;
+            font-weight: 600;
+            color: #333333;
+            cursor: pointer;
+        }
+
+        .opcion_ropa {
+            left: 26%;
+        }
+
+        .opcion_utiles {
+            left: 41%;
+        }
+
+        .opcion_limpieza {
+            left: 57%;
+        }
+
+        .opcion_dinero {
+            left: 85%;
+        }
+
+        .opcion input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+            width: 0.9cqw;
+            height: 0.9cqw;
+            margin: 0;
+            flex-shrink: 0;
+            border: 0.12cqw solid #903c99;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+        .opcion input[type="checkbox"]:checked {
+            background: #903c99;
+        }
+
+        .opcion input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0.3cqw;
+            height: 0.55cqw;
+            border: solid #ffffff;
+            border-width: 0 0.12cqw 0.12cqw 0;
+            transform: translate(-50%, -60%) rotate(45deg);
+        }
+
+        .bg_red {
+            margin-left: 0.4cqw;
+            margin-top: 0.5cqw;
+            grid-column: 12/44;
+            grid-row: 5/23;
+            z-index: 1;
+            img {
+                height: 101%;
+            }
+        }
+        .menu_top {
+            grid-column: 13/42;
+            grid-row: 3/6;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+        }
+
+        .menu_top a {
+            font-size: 1.143cqw;
+            font-weight: 500;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+            text-decoration: none;
+            transition: transform 0.25s ease;
+            padding: 0.5cqw 1.1cqw;
+            justify-self: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .menu_top a:hover {
+            transform: scale(1.08);
+        }
+
+        .menu_top .activo {
+            font-weight: 700;
+            background-color: #ff3545;
+            color: #ffffff;
+            border-radius: 1.4cqw;
+            padding: 0.5cqw 1.1cqw;
+        }
+    </style>
+</Morado>
