@@ -186,7 +186,7 @@ import Verde from "./../../layouts/Verde.astro";
 </Verde>
 
 <script>
-    const data = {
+    const data: Record<string, { t: string; sub: string; info: string }> = {
         1: {
             t: "06 de mayo",
             sub: "Fiesta de Domingo Savio",
@@ -204,15 +204,15 @@ import Verde from "./../../layouts/Verde.astro";
         },
     };
 
-    const eventos = document.querySelector(".eventos");
+    const eventos = document.querySelector<HTMLElement>(".eventos");
     if (eventos) {
-        const t = document.querySelector(".titulo .t");
-        const sub = document.querySelector(".titulo .sub");
-        const info = document.querySelector(".info");
+        const t = document.querySelector<HTMLElement>(".titulo .t")!;
+        const sub = document.querySelector<HTMLElement>(".titulo .sub")!;
+        const info = document.querySelector<HTMLElement>(".info")!;
 
-        eventos.querySelectorAll(".evento").forEach((btn) => {
+        eventos.querySelectorAll<HTMLElement>(".evento").forEach((btn) => {
             btn.addEventListener("click", () => {
-                const n = btn.dataset.evento;
+                const n = btn.dataset.evento ?? "";
                 const d = data[n];
                 if (!d) return;
                 eventos.dataset.evento = n;

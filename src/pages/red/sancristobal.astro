@@ -306,7 +306,12 @@ import Menured from "../../components/Menured.astro";
     </style>
 
     <script>
-        function activarScroll(caja, scroller, barra, thumb) {
+        function activarScroll(
+            caja: HTMLElement,
+            scroller: HTMLElement,
+            barra: HTMLElement,
+            thumb: HTMLElement,
+        ) {
             function maxTop() {
                 return scroller.clientHeight - thumb.offsetHeight;
             }
@@ -327,7 +332,7 @@ import Menured from "../../components/Menured.astro";
                 thumb.style.transform = `translateY(${proporcion * max}px)`;
             }
 
-            function scrollDesdeY(y) {
+            function scrollDesdeY(y: number) {
                 const max = maxTop();
                 if (max <= 0) return;
                 const proporcion = Math.min(
@@ -397,22 +402,22 @@ import Menured from "../../components/Menured.astro";
             actualizar();
         }
 
-        const info = document.querySelector(".info");
+        const info = document.querySelector<HTMLElement>(".info")!;
 
-        const caracteristicas = info.querySelector(".caracteristicas");
+        const caracteristicas = info.querySelector<HTMLElement>(".caracteristicas")!;
         activarScroll(
             caracteristicas,
-            caracteristicas.querySelector(".caracteristicas-scroll"),
-            caracteristicas.querySelector(".caracteristicas-barra"),
-            caracteristicas.querySelector(".caracteristicas-thumb"),
+            caracteristicas.querySelector<HTMLElement>(".caracteristicas-scroll")!,
+            caracteristicas.querySelector<HTMLElement>(".caracteristicas-barra")!,
+            caracteristicas.querySelector<HTMLElement>(".caracteristicas-thumb")!,
         );
 
-        const marco = info.querySelector(".marco");
+        const marco = info.querySelector<HTMLElement>(".marco")!;
         activarScroll(
             marco,
-            marco.querySelector(".marco-scroll"),
-            marco.querySelector(".marco-barra"),
-            marco.querySelector(".marco-thumb"),
+            marco.querySelector<HTMLElement>(".marco-scroll")!,
+            marco.querySelector<HTMLElement>(".marco-barra")!,
+            marco.querySelector<HTMLElement>(".marco-thumb")!,
         );
     </script>
 </Naranja>

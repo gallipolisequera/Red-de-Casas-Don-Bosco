@@ -98,16 +98,16 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 <script>
 	const imagenes = ["/carrusel/r_img1.webp", "/carrusel/r_img2.webp"];
 
-	const c1 = document.querySelector(".carrusel1");
-	const c2 = document.querySelector(".carrusel2");
-	const flearriba = document.querySelector(".flearriba");
-	const fleabajo = document.querySelector(".fleabajo");
+	const c1 = document.querySelector<HTMLElement>(".carrusel1")!;
+	const c2 = document.querySelector<HTMLElement>(".carrusel2")!;
+	const flearriba = document.querySelector<HTMLElement>(".flearriba")!;
+	const fleabajo = document.querySelector<HTMLElement>(".fleabajo")!;
 
 	const total = imagenes.length;
 	const copias = 3;
 	let pos = total;
 
-	function crearPista(contenedor) {
+	function crearPista(contenedor: Element) {
 		const pista = document.createElement("div");
 		pista.className = "pista";
 		for (let i = 0; i < copias; i++) {
@@ -125,9 +125,9 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 	const pista1 = crearPista(c1);
 	const pista2 = crearPista(c2);
 
-	let pendiente = null;
+	let pendiente: number | null = null;
 
-	function posicionar(sinTransicion) {
+	function posicionar(sinTransicion: boolean) {
 		if (sinTransicion) {
 			pista1.style.transition = "none";
 			pista2.style.transition = "none";

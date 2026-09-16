@@ -176,8 +176,8 @@ import Rojo from "../../layouts/Rojo.astro";
 </Rojo>
 
 <script>
-    const panel = document.querySelector(".menumision");
-    panel.querySelectorAll("[data-opcion]").forEach((opcion) => {
+    const panel = document.querySelector<HTMLElement>(".menumision")!;
+    panel.querySelectorAll<HTMLElement>("[data-opcion]").forEach((opcion) => {
         opcion.addEventListener("click", () => {
             panel.dataset.visible = opcion.dataset.opcion;
         });

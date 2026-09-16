@@ -573,8 +573,8 @@
 </style>
 
 <script>
-	const menu = document.querySelector(".menu_red");
-	const info = document.querySelector(".info");
+	const menu = document.querySelector<HTMLElement>(".menu_red")!;
+	const info = document.querySelector<HTMLElement>(".info")!;
 
 	const secciones = {
 		ubi: ".ubicacion",
@@ -583,15 +583,15 @@
 		contac: ".contacto",
 	};
 
-	function mostrar(estado) {
+	function mostrar(estado: string | undefined) {
 		menu.dataset.visible = estado;
 		for (const [clave, selector] of Object.entries(secciones)) {
-			const el = info.querySelector(selector);
+			const el = info.querySelector<HTMLElement>(selector);
 			if (el) el.hidden = clave !== estado;
 		}
 	}
 
-	menu.querySelectorAll("[data-btn]").forEach((boton) => {
+	menu.querySelectorAll<HTMLElement>("[data-btn]").forEach((boton) => {
 		boton.addEventListener("click", () => mostrar(boton.dataset.btn));
 	});
 

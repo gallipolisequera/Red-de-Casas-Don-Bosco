@@ -696,8 +696,8 @@
 </style>
 
 <script>
-	const menu = document.querySelector(".menu_perfil");
-	menu.querySelectorAll("[data-btn]").forEach((boton) => {
+	const menu = document.querySelector<HTMLElement>(".menu_perfil")!;
+	menu.querySelectorAll<HTMLElement>("[data-btn]").forEach((boton) => {
 		boton.addEventListener("click", () => {
 			menu.dataset.visible = boton.dataset.btn;
 		});

@@ -236,12 +236,12 @@ import Menured from "../../../components/Menured.astro";
     </style>
 
     <script>
-        const caracteristicas = document.querySelector(".caracteristicas");
-        const scroller = caracteristicas.querySelector(
+        const caracteristicas = document.querySelector<HTMLElement>(".caracteristicas")!;
+        const scroller = caracteristicas.querySelector<HTMLElement>(
             ".caracteristicas-scroll",
-        );
-        const barra = caracteristicas.querySelector(".caracteristicas-barra");
-        const thumb = caracteristicas.querySelector(".caracteristicas-thumb");
+        )!;
+        const barra = caracteristicas.querySelector<HTMLElement>(".caracteristicas-barra")!;
+        const thumb = caracteristicas.querySelector<HTMLElement>(".caracteristicas-thumb")!;
 
         function maxTop() {
             return scroller.clientHeight - thumb.offsetHeight;
@@ -260,7 +260,7 @@ import Menured from "../../../components/Menured.astro";
             thumb.style.transform = `translateY(${proporcion * max}px)`;
         }
 
-        function scrollDesdeY(y) {
+        function scrollDesdeY(y: number) {
             const max = maxTop();
             if (max <= 0) return;
             const proporcion = Math.min(

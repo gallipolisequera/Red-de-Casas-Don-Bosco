@@ -97,7 +97,7 @@ const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
 </html>
 
 <script>
-	const nav = document.querySelector(".testimonios-nav");
+	const nav = document.querySelector<HTMLElement>(".testimonios-nav");
 	if (nav) {
 		const activo = parseInt(nav.dataset.activo || "0", 10);
 		const flearriba = document.querySelector(".flearriba");

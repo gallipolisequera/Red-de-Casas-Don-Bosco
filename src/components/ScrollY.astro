@@ -71,10 +71,10 @@ const { pista = "#f6d77e", thumb = "#e8b618" } = Astro.props;
 </style>
 
 <script>
-	document.querySelectorAll(".scroll-y").forEach((scrollY) => {
-		const scroller = scrollY.querySelector(".scroll-y-area");
-		const barra = scrollY.querySelector(".scroll-y-barra");
-		const thumb = scrollY.querySelector(".scroll-y-thumb");
+	document.querySelectorAll<HTMLElement>(".scroll-y").forEach((scrollY) => {
+		const scroller = scrollY.querySelector<HTMLElement>(".scroll-y-area")!;
+		const barra = scrollY.querySelector<HTMLElement>(".scroll-y-barra")!;
+		const thumb = scrollY.querySelector<HTMLElement>(".scroll-y-thumb")!;
 
 		function maxTop() {
 			return scroller.clientHeight - thumb.offsetHeight;
@@ -93,7 +93,7 @@ const { pista = "#f6d77e", thumb = "#e8b618" } = Astro.props;
 			thumb.style.transform = `translateY(${proporcion * max}px)`;
 		}
 
-		function scrollDesdeY(y) {
+		function scrollDesdeY(y: number) {
 			const max = maxTop();
 			if (max <= 0) return;
 			const proporcion = Math.min(
