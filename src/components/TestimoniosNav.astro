@@ -58,13 +58,17 @@ const links = Array.from(
 						class="btn-img"
 						src={item.btn}
 						alt=""
-						style={activo === item.num ? "display: none;" : undefined}
+						style={
+							activo === item.num ? "display: none;" : undefined
+						}
 					/>
 					<img
 						class="activo-img"
 						src={item.activoImg}
 						alt=""
-						style={activo !== item.num ? "display: none;" : undefined}
+						style={
+							activo !== item.num ? "display: none;" : undefined
+						}
 					/>
 				</a>
 			))
