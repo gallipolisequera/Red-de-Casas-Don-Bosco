@@ -15,13 +15,19 @@ import Azul from "../../layouts/Azul.astro";
 
     <form class="formulario">
         <div class="campo campo_nombre">
-            <input type="text" name="nombre" aria-label="Nombre" />
+            <input
+                type="text"
+                name="nombre"
+                placeholder="Tu nombre y apellido"
+                aria-label="Nombre"
+            />
         </div>
         <div class="campo campo_edad">
             <input
                 type="text"
                 name="edad"
                 inputmode="numeric"
+                placeholder="00"
                 aria-label="Edad"
             />
         </div>
@@ -29,13 +35,28 @@ import Azul from "../../layouts/Azul.astro";
             <select name="codigo_pais" aria-label="Código de país">
                 <option value="+58">+58</option>
             </select>
-            <input type="tel" name="telefono" aria-label="Teléfono" />
+            <input
+                type="tel"
+                name="telefono"
+                placeholder="Tu teléfono"
+                aria-label="Teléfono"
+            />
         </div>
         <div class="campo campo_correo">
-            <input type="email" name="correo" aria-label="Correo" />
+            <input
+                type="email"
+                name="correo"
+                placeholder="Tu correo electrónico"
+                aria-label="Correo"
+            />
         </div>
         <div class="campo campo_ocupacion">
-            <input type="text" name="ocupacion" aria-label="Ocupación" />
+            <input
+                type="text"
+                name="ocupacion"
+                placeholder="Profesión u ocupación actual"
+                aria-label="Ocupación"
+            />
         </div>
         <div class="campo campo_lunes">
             <label class="opcion opcion_mananas"
@@ -50,7 +71,12 @@ import Azul from "../../layouts/Azul.astro";
             >
         </div>
         <div class="campo campo_otro">
-            <input type="text" name="otro" aria-label="Otro" />
+            <input
+                type="text"
+                name="otro"
+                placeholder="Especificar disponibilidad"
+                aria-label="Otro"
+            />
         </div>
         <div class="campo campo_findesemana">
             <label class="opcion opcion_mananas"
@@ -124,7 +150,7 @@ import Azul from "../../layouts/Azul.astro";
         }
         .ver_casas {
             padding-top: 1cqw;
-            grid-column: 31/40;
+            grid-column: 31/41;
             grid-row: 19/22;
             z-index: 2;
             img {
@@ -193,7 +219,7 @@ import Azul from "../../layouts/Azul.astro";
         }
 
         .campo_ocupacion {
-            grid-column: 27/39;
+            grid-column: 27/41;
             grid-row: 13/14;
             background: url("/azul/formulario/campo_ocupacion.svg") center /
                 100% 100% no-repeat;
@@ -288,7 +314,7 @@ import Azul from "../../layouts/Azul.astro";
         }
 
         .campo_otro input {
-            left: 18%;
+            left: 22%;
             right: 9%;
         }
 

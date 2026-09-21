@@ -3,7 +3,7 @@ import TestimoniosNav from "../components/TestimoniosNav.astro";
 
 interface Props {
 	title?: string;
-	testimonioActivo?: 0 | 1 | 2 | 3 | 4;
+	testimonioActivo?: 0 | 1 | 2 | 3 | 4 | 5;
 }
 
 const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
@@ -99,26 +99,46 @@ const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
 <script>
 	const nav = document.querySelector<HTMLElement>(".testimonios-nav");
 	if (nav) {
-		const activo = parseInt(nav.dataset.activo || "0", 10);
 		const flearriba = document.querySelector(".flearriba");
 		const fleabajo = document.querySelector(".fleabajo");
+		const track = nav.querySelector<HTMLElement>(".testimonios-track");
+		const links = nav.querySelectorAll(".testimonio-link");
+		const copias = 5;
+		const n = links.length / copias; // ítems únicos
+		const visibles = 4;
+		const paso = 8.9; // cqw = alto .testimonio-link (9) + margin-bottom (-0.1)
+		const base = 2 * n; // copia central
 
-		const urls = [
-			"/testimonios/testimonios",
-			"/testimonios/testimonio1",
-			"/testimonios/testimonio2",
-			"/testimonios/testimonio3",
-			"/testimonios/testimonio4",
-		];
+		let index = base;
+		const activo = parseInt(nav.dataset.activo || "0", 10);
+		if (activo > 0) {
+			index = base + Math.max(0, activo - 1 - (visibles - 1));
+		}
+
+		const posicionar = (animar: boolean) => {
+			if (!track) return;
+			track.style.transition = animar ? "transform 0.35s ease" : "none";
+			track.style.transform = `translateY(-${index * paso}cqw)`;
+			if (!animar) void track.offsetWidth;
+		};
+
+		posicionar(false);
+
+		track?.addEventListener("transitionend", () => {
+			if (index >= 3 * n || index < 2 * n) {
+				index = 2 * n + ((((index - 2 * n) % n) + n) % n);
+				posicionar(false);
+			}
+		});
 
 		flearriba?.addEventListener("click", () => {
-			const prev = activo === 0 ? urls.length - 1 : activo - 1;
-			window.location.href = urls[prev];
+			index -= 1;
+			posicionar(true);
 		});
 
 		fleabajo?.addEventListener("click", () => {
-			const next = activo === urls.length - 1 ? 0 : activo + 1;
-			window.location.href = urls[next];
+			index += 1;
+			posicionar(true);
 		});
 	}
 </script>
@@ -293,6 +313,7 @@ const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
 		margin-bottom: 2.15cqw;
 		top: 0.45cqw;
 		left: 0.7cqw;
+		padding-right: 1cqw;
 		img {
 			width: 9cqw;
 		}

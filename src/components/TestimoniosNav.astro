@@ -1,6 +1,6 @@
 ---
 interface Props {
-	activo?: 0 | 1 | 2 | 3 | 4;
+	activo?: 0 | 1 | 2 | 3 | 4 | 5;
 }
 
 const { activo = 0 } = Astro.props;
@@ -30,32 +30,46 @@ const items = [
 		btn: "/amarillo/btn_tes4.svg",
 		activoImg: "/amarillo/activo_tes4.svg",
 	},
+	{
+		num: 5,
+		href: "/testimonios/testimonio5",
+		btn: "/amarillo/btn_tes5.svg",
+		activoImg: "/amarillo/activo_tes5.svg",
+	},
 ];
+
+const copias = 5;
+const links = Array.from(
+	{ length: items.length * copias },
+	(_, k) => items[k % items.length],
+);
 ---
 
 <div class="testimonios-nav" data-activo={activo}>
-	{
-		items.map((item) => (
-			<a
-				class={`testimonio-link t${item.num}`}
-				href={item.href}
-				data-num={item.num}
-			>
-				<img
-					class="btn-img"
-					src={item.btn}
-					alt=""
-					style={activo === item.num ? "display: none;" : undefined}
-				/>
-				<img
-					class="activo-img"
-					src={item.activoImg}
-					alt=""
-					style={activo !== item.num ? "display: none;" : undefined}
-				/>
-			</a>
-		))
-	}
+	<div class="testimonios-track">
+		{
+			links.map((item) => (
+				<a
+					class={`testimonio-link t${item.num}`}
+					href={item.href}
+					data-num={item.num}
+				>
+					<img
+						class="btn-img"
+						src={item.btn}
+						alt=""
+						style={activo === item.num ? "display: none;" : undefined}
+					/>
+					<img
+						class="activo-img"
+						src={item.activoImg}
+						alt=""
+						style={activo !== item.num ? "display: none;" : undefined}
+					/>
+				</a>
+			))
+		}
+	</div>
 </div>
 
 <style>
@@ -64,7 +78,17 @@ const items = [
 		flex-direction: column;
 		align-items: center;
 		width: 18.5cqw;
-		height: 100%;
+		height: 36.7cqw;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	.testimonios-track {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		transition: transform 0.35s ease;
 	}
 
 	.testimonio-link {
@@ -88,7 +112,7 @@ const items = [
 	.testimonio-link img {
 		position: absolute;
 		top: -0.5cqw;
-		left: 0.4cqw;
+		left: 0.19cqw;
 		display: block;
 		width: 19cqw;
 	}
@@ -115,6 +139,13 @@ const items = [
 	}
 
 	.testimonio-link.t4 .activo-img {
+		position: relative;
+		top: 1cqw;
+		width: 15.6cqw;
+		margin-left: 1.4cqw;
+	}
+
+	.testimonio-link.t5 .activo-img {
 		position: relative;
 		top: 1cqw;
 		width: 15.6cqw;

@@ -7,7 +7,7 @@ import ScrollY from "../../components/ScrollY.astro";
     <div class="testimonio_contenido">
         <ScrollY>
         <p>
-            Testimonio de un educador
+            <span class="titulo">Testimonio de un educador</span>
             <br /><br />
 
             Me llamo Nando Martínez y llevo más de 20 años como educador en la
@@ -41,6 +41,9 @@ import ScrollY from "../../components/ScrollY.astro";
     </div>
 
     <style>
+        .titulo {
+            font-weight: 700 !important;
+        }
         .testimonio_contenido {
             grid-column: 15/41;
             grid-row: 10/20;

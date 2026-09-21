@@ -5,12 +5,14 @@ import Amarillo from "../../layouts/Amarillo.astro";
 <Amarillo testimonioActivo={4} title="Casas Don Bosco - Testimonio 4">
     <div class="testimonio_contenido">
         <p>
-            Casa Don Bosco no solo me dio un techo y educación cuando más lo
-            necesitaba, me dio una familia y herramientas para salir adelante.
-            Hoy, regresar como instructor para enseñar un oficio a los jóvenes
-            que están en el lugar donde yo alguna vez estuve, es mi forma de
-            cerrar el círculo. Este lugar demuestra que cuando le das una
-            oportunidad a un joven, transformas su futuro por completo.
+            <span class="titulo">Testimonio de un ex alumno</span>
+            <br /><br />
+            Casa Don Bosco no solo me dio un techo y educación cuando más lo necesitaba,
+            me dio una familia y herramientas para salir adelante. Hoy, regresar como
+            instructor para enseñar un oficio a los jóvenes que están en el lugar
+            donde yo alguna vez estuve, es mi forma de cerrar el círculo. Este lugar
+            demuestra que cuando le das una oportunidad a un joven, transformas su
+            futuro por completo.
         </p>
     </div>
     <div class="bg_testimonios">
@@ -18,6 +20,9 @@ import Amarillo from "../../layouts/Amarillo.astro";
     </div>
 
     <style>
+        .titulo {
+            font-weight: 700 !important;
+        }
         .testimonio_contenido {
             grid-column: 15/41;
             grid-row: 10/16;
