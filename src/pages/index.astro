@@ -1,84 +1,151 @@
 ---
-import Rojo from "../layouts/Rojo.astro";
+import Home from "../layouts/Home.astro";
 ---
 
-<Rojo>
-    <div class="menu_top">
-        <a class="activo" href="#">¿Qué es?</a>
-        <a href="/casas/historia">Historia</a>
-        <a href="/casas/misionyvision">Misión y Visión</a>
-        <a href="/casas/familia">Familia Salesiana</a>
-        <a href="/casas/perfil">Perfil de atendidos</a>
+<Home>
+    <div class="que_es">
+        <img class="t_home" src="/t_home.svg" alt="¿Qué es?" />
+        <button class="btn_img_home" type="button" aria-label="Ver créditos">
+            <img
+                class="img_home"
+                src="/img_home.png"
+                alt="Comunidad de la Red de Casas Don Bosco"
+            />
+        </button>
     </div>
 
-    <div class="que_es">
-        <p>
-            Es una Asociación Civil, sin fines de lucro, que brinda apoyo y
-            acompañamiento a <br />niños, niñas, adolescentes, jóvenes (NNAJ) y
-            sus familias que sufren severas situaciones de abandono económico,
-            social y moral, mediante la creación de obras y servicios, y la
-            realizacióde actividades educativas, deportivas, asistenciales,
-            culturales, tecnológicas, artísticas y religiosas, así como también
-            estimular a este fin a otras personas naturales o jurídicas, u
-            organizaciones.
-        </p>
-    </div>
-    <div class="bg_quees">
-        <img src="/rojo/que_es/bg_quees.svg" alt="" />
+    <div class="velo" aria-hidden="true"></div>
+
+    <div class="creditos">
+        <img src="/creditos.png" alt="Créditos del proyecto de grado 2026" />
     </div>
 
     <style>
+        /* El padre toma sus medidas SOLO de la cuadricula del stage:
+           40 columnas (1000 px) x 19 filas (475 px) */
         .que_es {
-            grid-column: 15/41;
-            grid-row: 10/16;
+            position: absolute;
+            grid-column: 14/54;
+            grid-row: 5/24;
             z-index: 2;
-        }
 
-        .que_es p {
-            font-family: "Open Sans", sans-serif;
-            font-size: 1.143cqw;
-            font-weight: 500;
-            letter-spacing: -0.009em;
-            line-height: 1.571cqw;
-            margin: 0;
-        }
-
-        .bg_quees {
-            grid-column: 12/44;
-            grid-row: 6/23;
-            z-index: 1;
-        }
-        .menu_top {
-            grid-column: 13/42;
-            grid-row: 3/6;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: 1fr;
+            grid-template-rows: 3fr 16fr; /* 19 filas internas = 3 titulo + 16 foto */
+            justify-items: center;
             align-items: center;
         }
 
-        .menu_top a {
-            font-size: 1.143cqw;
-            font-weight: 500;
-            font-family: "Open Sans", sans-serif;
-            color: #333333;
-            text-decoration: none;
-            transition: transform 0.25s ease;
-            padding: 0.5cqw 1.1cqw;
-            justify-self: center;
-            text-align: center;
-            white-space: nowrap;
+        /* ALTURA DEL TITULO: la define su fila (3fr de 19 = 3/19 de 475 px ~ 75 px) */
+        .t_home {
+            position: relative;
+            grid-row: 1;
+            height: 48%;
+            width: auto;
+            display: block;
+            bottom: 2.25cqw;
         }
 
-        .menu_top a:hover {
-            transform: scale(1.08);
+        .btn_img_home {
+            position: relative;
+            bottom: 13cqw;
+            right: 1cqw;
+            grid-row: 2;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition:
+                transform 0.25s ease,
+                filter 0.25s ease;
         }
 
-        .menu_top .activo {
-            font-weight: 700;
-            background-color: #ff3545;
-            color: #ffffff;
-            border-radius: 1.4cqw;
-            padding: 0.5cqw 1.1cqw;
+        /* HOVER SUTIL: intensidad del efecto */
+        .btn_img_home:hover {
+            transform: scale(1.02);
+            filter: brightness(1.04);
+        }
+
+        .btn_img_home:focus-visible {
+            outline: 0.2cqw solid #ff3545;
+            outline-offset: 0.4cqw;
+        }
+
+        .img_home {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Velo: TODA la pantalla visible (fuera de la cuadricula del stage) */
+        .velo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh; /* movil: altura visible real (barra del navegador) */
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            pointer-events: none; /* cerrado: no estorba */
+            transition: opacity 0.3s ease;
+            cursor: pointer; /* invita a cerrar */
+        }
+
+        /* Creditos: encima del velo */
+        .creditos {
+            grid-column: 12/47;
+            grid-row: 5/23;
+            z-index: 5;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .creditos img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Estado abierto */
+        .velo.abierto,
+        .creditos.abierto {
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
-</Rojo>
+
+    <script>
+        const btn = document.querySelector(".btn_img_home");
+        const velo = document.querySelector(".velo");
+        const creditos = document.querySelector(".creditos");
+
+        const abrir = () => {
+            velo?.classList.add("abierto");
+            creditos?.classList.add("abierto");
+        };
+        const cerrar = () => {
+            velo?.classList.remove("abierto");
+            creditos?.classList.remove("abierto");
+        };
+
+        // Entrar en home siempre arranca con los creditos ocultos,
+        // incluso al volver con Atras/Adelante (bfcache).
+        cerrar();
+        window.addEventListener("pageshow", cerrar);
+
+        btn?.addEventListener("click", abrir);
+        velo?.addEventListener("click", cerrar);
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") cerrar();
+        });
+    </script>
+</Home>
