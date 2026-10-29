@@ -1,0 +1,123 @@
+---
+// Boton de creditos + modal.
+// Se incluye dentro del .stage de cada layout, despues del .footer.
+---
+
+<button class="btn_creditos" type="button" aria-label="Ver créditos">
+	<img src="/footer/btn_creditos.svg" alt="" />
+</button>
+
+<div class="velo" aria-hidden="true"></div>
+
+<div class="creditos">
+	<img src="/creditos.png" alt="Créditos del proyecto de grado 2026" />
+</div>
+
+<style>
+	/* El icono ya viene incrustado en footerbg.svg:
+	   el boton lo cubre y lo vuelve clickeable */
+	.btn_creditos {
+		grid-column: 3/5;
+		grid-row: 24/26;
+		z-index: 4; /* encima de la img del footer (z-index: 3) */
+		justify-self: start;
+		align-self: center;
+		margin-left: 0.65cqw; /* = padding-left del footer */
+		width: 2.64cqw; /* = tamano del icono del footerbar */
+		aspect-ratio: 1;
+		padding: 0;
+		border: 0;
+		background: none;
+		cursor: pointer;
+		display: grid;
+		place-items: center;
+		transition:
+			transform 0.25s ease,
+			filter 0.25s ease;
+	}
+
+	.btn_creditos img {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	/* HOVER SUTIL */
+	.btn_creditos:hover {
+		transform: scale(1.08);
+		filter: brightness(1.1);
+	}
+
+	.btn_creditos:focus-visible {
+		outline: 0.2cqw solid #ff3545;
+		outline-offset: 0.3cqw;
+		border-radius: 50%;
+	}
+
+	/* Velo: TODA la pantalla visible (fuera de la cuadricula del stage) */
+	.velo {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 100vw;
+		height: 100vh;
+		height: 100dvh; /* movil: altura visible real (barra del navegador) */
+		transform: translate(-50%, -50%);
+		z-index: 6;
+		background: rgba(0, 0, 0, 0.5);
+		opacity: 0;
+		pointer-events: none; /* cerrado: no estorba */
+		transition: opacity 0.3s ease;
+		cursor: pointer; /* invita a cerrar */
+	}
+
+	/* Creditos: encima del velo */
+	.creditos {
+		grid-column: 12/47;
+		grid-row: 5/23;
+		z-index: 7;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+	}
+
+	.creditos img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		display: block;
+	}
+
+	/* Estado abierto */
+	.velo.abierto,
+	.creditos.abierto {
+		opacity: 1;
+		pointer-events: auto;
+	}
+</style>
+
+<script>
+	const btn = document.querySelector(".btn_creditos");
+	const velo = document.querySelector(".velo");
+	const creditos = document.querySelector(".creditos");
+
+	const abrir = () => {
+		velo?.classList.add("abierto");
+		creditos?.classList.add("abierto");
+	};
+	const cerrar = () => {
+		velo?.classList.remove("abierto");
+		creditos?.classList.remove("abierto");
+	};
+
+	// Entrar siempre arranca con los creditos ocultos,
+	// incluso al volver con Atras/Adelante (bfcache).
+	cerrar();
+	window.addEventListener("pageshow", cerrar);
+
+	btn?.addEventListener("click", abrir);
+	velo?.addEventListener("click", cerrar);
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") cerrar();
+	});
+</script>

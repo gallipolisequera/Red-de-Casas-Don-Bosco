@@ -1,6 +1,8 @@
 ---
 import TestimoniosNav from "../components/TestimoniosNav.astro";
 
+import Creditos from "../components/Creditos.astro";
+
 interface Props {
 	title?: string;
 	testimonioActivo?: 0 | 1 | 2 | 3 | 4 | 5;
@@ -43,7 +45,7 @@ const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
 				<a class="menu6" href="/donaciones/donaciones"
 					><img src="/menuiz/menu6r.svg" alt="" /></a
 				>
-				<a class="menu1" href="/"
+				<a class="menu1" href="/casas/"
 					><img src="/menuiz/menu1r.svg" alt="" /></a
 				>
 				<a class="menu2" href="/red/reddecasas"
@@ -93,6 +95,8 @@ const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
 				</div>
 				<img src="/footer/footerbg.svg" alt="" />
 			</div>
+
+			<Creditos />
 
 			<slot />
 		</div>

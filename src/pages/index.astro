@@ -14,12 +14,6 @@ import Home from "../layouts/Home.astro";
         </div>
     </div>
 
-    <div class="velo" aria-hidden="true"></div>
-
-    <div class="creditos">
-        <img src="/creditos.png" alt="Créditos del proyecto de grado 2026" />
-    </div>
-
     <style>
         /* El padre toma sus medidas SOLO de la cuadricula del stage:
            40 columnas (1000 px) x 19 filas (475 px) */
@@ -62,72 +56,5 @@ import Home from "../layouts/Home.astro";
             object-fit: contain;
             display: block;
         }
-
-        /* Velo: TODA la pantalla visible (fuera de la cuadricula del stage) */
-        .velo {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh; /* movil: altura visible real (barra del navegador) */
-            transform: translate(-50%, -50%);
-            z-index: 6;
-            background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            pointer-events: none; /* cerrado: no estorba */
-            transition: opacity 0.3s ease;
-            cursor: pointer; /* invita a cerrar */
-        }
-
-        /* Creditos: encima del velo */
-        .creditos {
-            grid-column: 12/47;
-            grid-row: 5/23;
-            z-index: 7;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .creditos img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        /* Estado abierto */
-        .velo.abierto,
-        .creditos.abierto {
-            opacity: 1;
-            pointer-events: auto;
-        }
     </style>
-
-    <script>
-        const btn = document.querySelector(".btn_creditos");
-        const velo = document.querySelector(".velo");
-        const creditos = document.querySelector(".creditos");
-
-        const abrir = () => {
-            velo?.classList.add("abierto");
-            creditos?.classList.add("abierto");
-        };
-        const cerrar = () => {
-            velo?.classList.remove("abierto");
-            creditos?.classList.remove("abierto");
-        };
-
-        // Entrar en home siempre arranca con los creditos ocultos,
-        // incluso al volver con Atras/Adelante (bfcache).
-        cerrar();
-        window.addEventListener("pageshow", cerrar);
-
-        btn?.addEventListener("click", abrir);
-        velo?.addEventListener("click", cerrar);
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") cerrar();
-        });
-    </script>
 </Home>

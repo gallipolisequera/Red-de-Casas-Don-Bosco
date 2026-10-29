@@ -1,4 +1,6 @@
 ---
+import Creditos from "../components/Creditos.astro";
+
 interface Props {
 	title?: string;
 	showGrid?: boolean;
@@ -43,7 +45,7 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 				<a class="menu6" href="/donaciones/donaciones"
 					><img src="/menuiz/menu6n.svg" alt="" /></a
 				>
-				<a class="menu1" href="/"
+				<a class="menu1" href="/casas/"
 					><img src="/menuiz/menu1n.svg" alt="" /></a
 				>
 			</div>
@@ -92,6 +94,8 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 				</div>
 				<img src="/footer/footerbg.svg" alt="" />
 			</div>
+
+			<Creditos />
 
 			<slot />
 		</div>
