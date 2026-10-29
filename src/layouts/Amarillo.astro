@@ -25,7 +25,9 @@ const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
 	<body>
 		<div class="stage">
 			<div id="logo">
-				<img src="/logo.svg" alt="" />
+				<a href="/" aria-label="Ir al inicio">
+					<img src="/logo.svg" alt="" />
+				</a>
 			</div>
 
 			<div id="curvaroja">
@@ -294,6 +296,23 @@ const { title = "Casas Don Bosco - Testimonios", testimonioActivo = 0 } =
 		grid-column: 3/9;
 		grid-row: 2/4;
 		z-index: 1;
+		a {
+			display: inline-flex;
+			cursor: pointer;
+			transition: transform 0.25s ease;
+		}
+		a:hover {
+			transform: scale(1.08);
+		}
+		a:focus-visible {
+			outline: 0.2cqw solid #ff3545;
+			outline-offset: 0.3cqw;
+		}
+		img {
+			display: block;
+			width: 152.21px; /* tamano intrinseco del SVG (no tiene width/height propios) */
+			height: 52.74px;
+		}
 	}
 
 	#curvaroja {
