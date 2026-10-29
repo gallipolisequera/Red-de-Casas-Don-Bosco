@@ -76,6 +76,10 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 				<img src="/footer/footerbg.svg" alt="" />
 			</div>
 
+			<button class="btn_creditos" type="button" aria-label="Ver créditos">
+				<img src="/footer/btn_creditos.svg" alt="" />
+			</button>
+
 			<slot />
 		</div>
 	</body>
@@ -149,6 +153,44 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 			width: 100%;
 			display: block;
 		}
+	}
+
+	/* Boton de creditos: calza sobre el icono ya incrustado en footerbg.svg */
+	.btn_creditos {
+		grid-column: 3/5;
+		grid-row: 24/26;
+		z-index: 4; /* encima de la img del footer (z-index: 3) */
+		justify-self: start;
+		align-self: center;
+		margin-left: 0.65cqw; /* = padding-left del footer */
+		width: 2.64cqw; /* = tamano del icono del footerbar */
+		aspect-ratio: 1;
+		padding: 0;
+		border: 0;
+		background: none;
+		cursor: pointer;
+		display: grid;
+		place-items: center;
+		transition:
+			transform 0.25s ease,
+			filter 0.25s ease;
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+
+	/* HOVER SUTIL */
+	.btn_creditos:hover {
+		transform: scale(1.08);
+		filter: brightness(1.1);
+	}
+
+	.btn_creditos:focus-visible {
+		outline: 0.2cqw solid #ff3545;
+		outline-offset: 0.3cqw;
+		border-radius: 50%;
 	}
 
 	.rrss {

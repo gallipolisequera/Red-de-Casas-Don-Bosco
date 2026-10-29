@@ -5,13 +5,13 @@ import Home from "../layouts/Home.astro";
 <Home>
     <div class="que_es">
         <img class="t_home" src="/t_home.svg" alt="¿Qué es?" />
-        <button class="btn_img_home" type="button" aria-label="Ver créditos">
+        <div class="figura_home">
             <img
                 class="img_home"
                 src="/img_home.png"
                 alt="Comunidad de la Red de Casas Don Bosco"
             />
-        </button>
+        </div>
     </div>
 
     <div class="velo" aria-hidden="true"></div>
@@ -46,32 +46,14 @@ import Home from "../layouts/Home.astro";
             bottom: 2.25cqw;
         }
 
-        .btn_img_home {
+        .figura_home {
             position: relative;
             bottom: 13cqw;
             right: 1cqw;
             grid-row: 2;
             height: 100%;
-            padding: 0;
-            border: 0;
-            background: none;
-            cursor: pointer;
             display: grid;
             place-items: center;
-            transition:
-                transform 0.25s ease,
-                filter 0.25s ease;
-        }
-
-        /* HOVER SUTIL: intensidad del efecto */
-        .btn_img_home:hover {
-            transform: scale(1.02);
-            filter: brightness(1.04);
-        }
-
-        .btn_img_home:focus-visible {
-            outline: 0.2cqw solid #ff3545;
-            outline-offset: 0.4cqw;
         }
 
         .img_home {
@@ -90,7 +72,7 @@ import Home from "../layouts/Home.astro";
             height: 100vh;
             height: 100dvh; /* movil: altura visible real (barra del navegador) */
             transform: translate(-50%, -50%);
-            z-index: 4;
+            z-index: 6;
             background: rgba(0, 0, 0, 0.5);
             opacity: 0;
             pointer-events: none; /* cerrado: no estorba */
@@ -102,7 +84,7 @@ import Home from "../layouts/Home.astro";
         .creditos {
             grid-column: 12/47;
             grid-row: 5/23;
-            z-index: 5;
+            z-index: 7;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
@@ -124,7 +106,7 @@ import Home from "../layouts/Home.astro";
     </style>
 
     <script>
-        const btn = document.querySelector(".btn_img_home");
+        const btn = document.querySelector(".btn_creditos");
         const velo = document.querySelector(".velo");
         const creditos = document.querySelector(".creditos");
 
