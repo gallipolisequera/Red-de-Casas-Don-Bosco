@@ -105,31 +105,7 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 </html>
 
 <script>
-	const imagenes = [
-		"/carrusel/r_img1.webp",
-		"/carrusel/r_img2.webp",
-		"/carrusel/r_img3.webp",
-		"/carrusel/r_img4.webp",
-		"/carrusel/r_img5.webp",
-		"/carrusel/r_img6.webp",
-		"/carrusel/r_img7.webp",
-		"/carrusel/r_img8.webp",
-		"/carrusel/r_img9.webp",
-		"/carrusel/r_img10.webp",
-		"/carrusel/r_img11.webp",
-		"/carrusel/r_img12.webp",
-		"/carrusel/r_img13.webp",
-		"/carrusel/r_img14.webp",
-		"/carrusel/r_img15.webp",
-		"/carrusel/r_img16.webp",
-		"/carrusel/r_img17.webp",
-		"/carrusel/r_img18.webp",
-		"/carrusel/r_img19.webp",
-		"/carrusel/r_img20.webp",
-		"/carrusel/r_img21.webp",
-		"/carrusel/r_img22.webp",
-		"/carrusel/r_img23.webp",
-	];
+	import { imagenesCarrusel as imagenes } from "../data/carrusel";
 
 	const c1 = document.querySelector<HTMLElement>(".carrusel1")!;
 	const c2 = document.querySelector<HTMLElement>(".carrusel2")!;
@@ -148,6 +124,8 @@ const { title = "Casas Don Bosco - ¿Qué es?", showGrid = false } = Astro.props
 				const img = document.createElement("img");
 				img.src = src;
 				img.alt = "";
+				img.loading = "lazy";
+				img.decoding = "async";
 				pista.appendChild(img);
 			}
 		}

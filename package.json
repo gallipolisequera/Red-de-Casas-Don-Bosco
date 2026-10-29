@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format:svg": "node scripts/format-svg.mjs"
+    "format:svg": "node scripts/format-svg.mjs",
+    "carrusel": "node scripts/carrusel.mjs"
   },
   "dependencies": {
     "astro": "^7.2.7"
